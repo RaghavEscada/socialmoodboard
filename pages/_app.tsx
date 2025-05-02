@@ -6,6 +6,7 @@ import Navbar from "@/components/Navbar";
 import type { AppProps } from "next/app";
 import type { NextComponentType } from "next";
 
+
 interface MyAppProps extends AppProps {
   Component: NextComponentType;
 }

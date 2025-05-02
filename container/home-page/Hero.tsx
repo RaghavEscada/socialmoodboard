@@ -2,6 +2,7 @@
 import { useEffect, useRef } from "react";
 import Script from "next/script";
 
+
 export default function Hero() {
   const containerRef = useRef<HTMLDivElement>(null);
   const scrollContainerRef = useRef<HTMLDivElement>(null);
