@@ -18,25 +18,17 @@ export default function Ready() {
 
 	return (
 		<section
-			className="w-full text-white relative z-30 min-h-screen sm:h-screen xm:h-screen bg-slate-300 padding-y rounded-t-[20px] mt-[-20px]"
+			className="w-full text-white relative font-['Gilda_Display'] z-30 min-h-screen sm:h-screen xm:h-screen bg-black padding-y rounded-t-[20px] mt-[-20px]"
 			ref={container}>
 			<div className="w-full h-full flex justify-center gap-[50px] items-center flex-col">
 				<div className="flex flex-col gap-[10px]">
-					<h1 className="text-[290px] leading-[230px] lg:text-[220px] lg:leading-[170px] md:text-[180px] md:leading-[140px] sm:text-[120px] sm:leading-[90px] xm:text-[80px] xm:leading-[60px] tracking-[-2.5px] text-center font-bold font-FoundersGrotesk text-secondry uppercase pointer-events-none">
+					<h1 className="text-[290px] font-['Gilda_Display'] italic leading-[230px] lg:text-[220px] lg:leading-[170px] md:text-[180px] md:leading-[140px] sm:text-[120px] sm:leading-[90px] xm:text-[80px] xm:leading-[60px] tracking-[-2.5px] text-center font-bold text-red-800 uppercase pointer-events-none">
 						<TextMask>{phrase}</TextMask>
 					</h1>
 				</div>
 				<div className="flex flex-col  items-center gap-[10px]">
-					<div className="flex items-center justify-between bg-secondry cursor-pointer rounded-full group">
-						<RoundButton
-							href="/contact"
-							title="start the project"
-							className="bg-white text-black"
-							bgcolor="#000"
-							style={{ color: "#fff" }}
-						/>
-					</div>
-					<p className="text-[20px] font-NeueMontreal text-secondry">OR</p>
+					
+					
 					<div className="flex items-center justify-between bg-transparent cursor-pointer rounded-full group border border-[#212121]">
 						<Link
 							className="xl:text-[18px] xl:leading-[28px] text-[14px] leading-[24px] uppercase font-normal font-NeueMontreal"
@@ -44,10 +36,10 @@ export default function Ready() {
 							<Rounded
 								className="py-[6px]"
 								backgroundColor="#212121">
-								<p className="z-10 px-[10px] ml-[15px] py-[6px] group-hover:text-white text-black">
-								connect@revlient.com
+								<p className="z-10 px-[10px] ml-[15px] py-[6px] font-['Gilda_Display'] group-hover:text-white text-white">
+								socialmoodboard@gmail.com
 								</p>
-								<div className="bg-black group-hover:bg-white text-black p-[10px] rounded-full scale-[0.3] mr-[10px] group-hover:scale-[0.9] transition-all z-10 transform duration-[0.3s] ease-[.215,.61,.355,1]">
+								<div className="bg-white group-hover:bg-white p-[10px] rounded-full scale-[0.3] mr-[10px] group-hover:scale-[0.9] transition-all z-10 transform duration-[0.3s] ease-[.215,.61,.355,1]">
 									<ArrowUpRight
 										strokeWidth={1.5}
 										size={30}

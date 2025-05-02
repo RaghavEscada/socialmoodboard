@@ -18,13 +18,23 @@ export const footerItems = [
    {
       id: 1,
       title: "Instagram",
-      href: "https://www.instagram.com/revlient/",
+      href: "https://www.instagram.com/socialmooodboard/",
    },
 
    {
       id: 4,
       title: "Linkedin",
-      href: "https://www.linkedin.com/in/devjithanoop?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
+      href: "",
+   },
+   {
+      id: 4,
+      title: "Facebook",
+      href: "",
+   },
+   {
+      id: 4,
+      title: "X",
+      href: "",
    },
 ];
 
