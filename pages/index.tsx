@@ -1,6 +1,6 @@
 "use client";
 import { useEffect } from "react";
-import { Curve, Ready, Marquee } from "@/components";
+import { Curve, Ready } from "@/components";
 import { About, Clients, Hero, Projects } from "@/container";
 
 

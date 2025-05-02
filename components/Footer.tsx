@@ -2,7 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { LinkHover, TextMask } from "@/animation";
 import { footerItems, footernavbarItems } from "@/constants";
-import { TextHoverEffectDemo } from "@/data/data";
+
 
 
 export default function Footer() {

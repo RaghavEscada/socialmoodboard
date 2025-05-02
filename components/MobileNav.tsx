@@ -1,7 +1,6 @@
 "use client";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { HiOutlineUserGroup } from "react-icons/hi";
 import { MdOutlineDesignServices } from "react-icons/md";
 import { AiOutlineFundProjectionScreen } from "react-icons/ai";
 import {AiOutlineMail} from "react-icons/ai";
