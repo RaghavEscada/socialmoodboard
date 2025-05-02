@@ -3,6 +3,7 @@ import { Timeline } from "@/components/ui/timeline";
 import { TextHoverEffect } from "@/components/ui/text-hover-effect";
 import { LampContainer } from "@/components/ui/lamp";
 import { HeroParallax } from "@/components/ui/hero-parallax";
+import {ThreeDMarquee} from "@/components/ui/3d-marquee";
 
 
 
@@ -287,6 +288,33 @@ export function LampDemoTeam() {
     </LampContainer>
   );
 }
+
+export function ThreeDMarqueeDemo() {
+  const images = [
+    "/client01.png",
+    "/client02.png",
+    "/client03.png",
+    "/client04.png",
+    "/client05.png",
+    "/client06.png",
+    "/client08.png",
+    "/client09.png",
+    "/brand01.svg",
+    "/brand02.svg",
+    "/brand03.png",
+    "/nestle.svg",
+    "/orderlion.svg",
+    "/officevibe.svg",
+    "/planetly.svg",
+    "/lexus.svg",
+  ];
+  return (
+    <div className="mx-auto my-10 max-w-7xl rounded-3xl bg-gray-950/5 p-2 ring-1 ring-neutral-700/10 dark:bg-neutral-800">
+      <ThreeDMarquee images={images} />
+    </div>
+  );
+}
+
 
 
 

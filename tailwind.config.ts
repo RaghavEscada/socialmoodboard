@@ -1,3 +1,4 @@
+import { Gilda_Display } from "next/font/google";
 import type { Config } from "tailwindcss";
 
 const config: Config = {
@@ -20,6 +21,7 @@ const config: Config = {
     fontFamily: {
       FoundersGrotesk: ["FoundersGrotesk", "sans-serif"],
       NeueMontreal: ["NeueMontreal", "sans-serif"],
+      Gilda_Display:["Gilda_Display", "sans-serif"],
     },
     screens: {
       xm: { max: "400px" },
