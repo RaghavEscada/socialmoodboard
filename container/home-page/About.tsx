@@ -103,7 +103,7 @@ export const LogoCloud = () => {
 
 export default function About() {
   return (
-    <section className="w-full bg-gray-100 text-gray-800 py-32 px-8 sm:px-12 lg:px-16 relative overflow-hidden">
+    <section className="w-full bg-gray-100 text-gray-400 py-32 px-8 sm:px-12 lg:px-16 relative overflow-hidden">
       {/* Refined background elements */}
       <div className="absolute top-0 right-0 w-96 h-96 rounded-full bg-gradient-to-br from-stone-200/40 to-transparent blur-3xl" />
       <div className="absolute bottom-0 left-0 w-96 h-96 rounded-full bg-gradient-to-tr from-stone-300/40 to-transparent blur-3xl" />
@@ -191,6 +191,13 @@ export default function About() {
           </div>
         ))}
 
+      </div>
+
+      <div className="w-full my-20">
+       
+        <div className="w-screen relative left-1/2 transform -translate-x-1/2 bg-gray-400">
+          <TimelineDemo />
+        </div>
       </div>
 
      
