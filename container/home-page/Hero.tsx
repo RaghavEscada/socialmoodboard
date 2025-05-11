@@ -142,7 +142,7 @@ export default function Hero() {
       {/* Base container that contains the iframe with hero.html */}
       <div
         ref={containerRef}
-        className="w-full h-screen relative"
+        className="w-full h-screen relative pt-16"
         style={{ overflow: 'hidden' }}
       />
       

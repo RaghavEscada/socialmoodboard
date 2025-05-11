@@ -1,133 +1,77 @@
 import Link from "next/link";
 import Image from "next/image";
 import { LinkHover, TextMask } from "@/animation";
-import { footerItems, footernavbarItems } from "@/constants";
-
-
+import { ImageError } from "next/dist/server/image-optimizer";
 
 export default function Footer() {
-	const phrase = ["*", "mood", "up"];
-	const phrase1 = ["#nobasic", ""];
-	return (
-		<footer className="w-full min-h-screen padding-x z-30 relative pt-[40px] bg-gray-700 flex flex-col justify-between rounded-t-[20px] mt-[-20px]">
-			<div className="w-full flex justify-between sm:flex-col xm:flex-col">
-				<div className="flex flex-col justify-between sm:w-full xm:w-full w-1/2">
-					<h1 className="text-[150px] font-['Gilda_Display'] leading-[115px] lg:text-[130px] lg:leading-[98px] md:text-[100px] md:leading-[75px] sm:text-[74px] sm:leading-[68px] xm:text-[64px] xm:leading-[48px] font-semibold text-white uppercase">
-						<TextMask>{phrase}</TextMask>
-					</h1>
-				</div>
-				<div className="h-full flex flex-col justify-between sm:w-full xm:w-full w-1/2">
-					<div>
-						<h1 className="text-[150px] leading-[115px] lg:text-[130px] lg:leading-[98px] md:text-[100px] md:leading-[75px] sm:text-[74px] sm:leading-[68px] xm:text-[64px] xm:leading-[48px] font-semibold  font-['Gilda_Display'] text-red-700 uppercase">
-							<TextMask>{phrase1}</TextMask>
-						</h1>
-						<div className="pt-[50px]">
-							<h1 className="paragraph font-medium font-['Gilda_Display'] text-white pb-[20px]">
-								Socials:
-							</h1>
-							{footerItems.map((item) => (
-								<LinkHover
-									title={item.title}
-									href={item.href}
-									key={item.id}
-									className="before:h-[1px] after:h-[1px] w-fit paragraph font-medium text-white capitalize flex flex-col before:bottom-[1px] after:bottom-[1px]"
-								/>
-							))}
-						</div>
-						<div className="flex justify-between">
-							<div className="pt-[50px]">
-								<h1 className="paragraph font-medium  font-['Gilda_Display'] text-white pb-[20px]">
-									Studio:
-								</h1>
-								<div className="text-white">Based out of Delhi, Bombay</div>
-								
-							</div>
-							<div className="pt-[50px]">
-								<h1 className="paragraph font-medium  font-['Gilda_Display'] text-white pb-[20px]">
-									Move:
-								</h1>
-								{footernavbarItems.map((item) => (
-									<LinkHover
-										key={item.id}
-										title={item.title}
-										href={item.href}
-										className="before:h-[1px] after:h-[1px] w-fit paragraph font-medium text-white capitalize flex flex-col before:bottom-[1px] after:bottom-[1px]"
-									/>
-								))}
-							</div>
-						</div>
+  return (
+    <footer className="w-full bg-black text-white pt-10 pb-0 px-4 md:px-8 lg:px-12 relative">
+      <div className="max-w-7xl mx-auto">
 
+        {/* Main Footer Content */}
+        <div className="flex flex-col lg:flex-row justify-between mb-16">
+          {/* Logo and Copyright */}
+          <div className="mb-8 lg:mb-0">
+            <Link href="/">
+              <div className="flex items-center gap-2 mb-3">
+                <div className="w-32 h-32 rounded-md flex items-center justify-center">
+					<Image 
+						src="/smlogo.png" 
+						alt="Social Moodboard Logo"
+						height={1500}
+						width={1500}
+					/>
+                </div>
+                <span className="text-4xl font-['Gilda_Displa']">We Don't Do <span className="italic text-red-600">Ordinary</span></span>
+              </div>
+            </Link>
+            <p className="text-sm text-gray-400">© copyright Social Moodboard 2025. All rights reserved.</p>
+          </div>
 
-						<div className="pt-[50px] flex gap-x-[20px]">
-							<h1 className="paragraph font-medium  font-['Gilda_Display'] text-white">
-								Contact Number :
-								<a
-									href="https://wa.me/+91 82794 47049?text=Dear%Social%20Moodboard%20Team%2C%20I%20hope%20you%20are%20doing%20well.%20I%20am%20interested%20in%20learning%20more%20about%20your%20services%20and%20ongoing%20projects.%20Could%20you%20please%20provide%20more%20details%20or%20let%20me%20know%20a%20suitable%20time%20to%20discuss%20further%3F%20Looking%20forward%20to%20your%20response.%20Best%20regards%2C%20Client"
-									target="_blank"
-									rel="noopener noreferrer"
-									className="text-green-600 font-bold underline"
-								>
-									<br/>
-									+91 82794 47049
-								</a>
-							</h1>
+          {/* Navigation Columns */}
+          <div className="grid grid-cols-3 gap-8 lg:gap-16">
+            {/* Pages Column */}
+            <div>
+              <h3 className="text-lg font-medium mb-6">Pages</h3>
+              <ul className="space-y-4">
+                <li><Link href="/products" className="hover:text-gray-300">Services</Link></li>
+                <li><Link href="/studio" className="hover:text-gray-300">Works</Link></li>
+                <li><Link href="/clients" className="hover:text-gray-300">About</Link></li>
+                <li><Link href="/pricing" className="hover:text-gray-300">Contact</Link></li>
+               
+              </ul>
+            </div>
 
-							<h1 className="paragraph font-medium  font-['Gilda_Display'] text-white">
-								Email ID:
-							</h1>
-							<LinkHover
-								title="socialmoodboard@gmail.com"
-								href="socialmoodboard@gmail.com"
-								className="before:h-[1px] after:h-[1px] paragraph font-medium before:bottom-[-3px] after:bottom-[-3px]"
-							/>
+            {/* Socials Column */}
+            <div>
+              <h3 className="text-lg font-medium mb-6">Socials</h3>
+              <ul className="space-y-4">
+                <li><Link href="https://facebook.com" className="hover:text-gray-300">Facebook</Link></li>
+                <li><Link href="https://instagram.com" className="hover:text-gray-300">Instagram</Link></li>
+                <li><Link href="https://twitter.com" className="hover:text-gray-300">Twitter</Link></li>
+                <li><Link href="https://linkedin.com" className="hover:text-gray-300">LinkedIn</Link></li>
+              </ul>
+            </div>
 
-
-						</div>
-
-						<div className="pt-[50px] flex gap-x-[20px]">
-
-						</div>
-					</div>
-				</div>
-			</div>
-			<div className="w-full pt-[40px] pb-[30px] flex justify-between sm:flex-col xm:flex-col sm:gap-[20px] xm:gap-[20px]">
-				<div className="w-1/2 sm:w-full xm:w-full">
-					<Link href={"/"}>
-						<Image
-							src="/smlogo.png"
-							alt="rev logo"
-							width={250}
-							height={250}
-						/>
-					</Link>
-				</div>
-
-				<div className="w-1/2 h-full flex gap-[10px] justify-between items-end sm:w-full xm:w-full sm:flex-col xm:flex-col sm:items-start xm:items-start">
-					<div className="flex sm:flex-col xm:flex-col gap-[10px]">
-						<h1 className="paragraph font-medium  font-['Gilda_Display'] text-white opacity-40">
-							© Social Moodboard 2025.
-						</h1>
-						<LinkHover
-							title="Legal Terms"
-							href="https://legislative.gov.in/legal-glossary/"
-							className="before:h-[1px] after:h-[1px] paragraph font-medium text-white opacity-40 before:bottom-[-3px] after:bottom-[-3px]"
-						/>
-					</div>
-					<div>
-
-						<LinkHover
-							title="Website by Raghav"
-							href="https://raghavkrishnaportfolio.vercel.app/"
-							className="before:h-[1px] after:h-[1px] paragraph font-medium text-white opacity-40 before:bottom-[-3px] after:bottom-[-3px]"
-						/>
-
-
-
-					</div>
-				</div>
-
-			</div>
-			<p className="text-center text-9xl font-['Gilda_Display'] md:text-4xl text-white italic">SOCIAL MOODBOARD</p>
-		</footer>
-	);
+            {/* Legal Column */}
+            <div>
+              <h3 className="text-lg font-medium mb-6">Legal</h3>
+              <ul className="space-y-4">
+                <li><Link href="/privacy-policy" className="hover:text-gray-300">Privacy Policy</Link></li>
+                <li><Link href="/terms-of-service" className="hover:text-gray-300">Terms of Service</Link></li>
+                
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      {/* Large DevStudio text at bottom with full width */}
+      <div className="w-full mt-16 overflow-hidden">
+        <h1 className="text-[6rem] md:text-[6rem] lg:text-[163px] font-bold  text-secondary opacity-30 leading-none">
+         Social Moodboard
+        </h1>
+      </div>
+    </footer>
+  );
 }

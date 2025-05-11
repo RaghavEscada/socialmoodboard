@@ -5,6 +5,9 @@ export { default as Projects } from "./home-page/Projects";
 export { default as Clients } from "./home-page/Clients";
 
 
+import {default as Services} from "./services-page/serv";
+
+
 
 
 
