@@ -3,9 +3,10 @@ export { default as Hero } from "./home-page/Hero";
 export { default as About } from "./home-page/About";
 export { default as Projects } from "./home-page/Projects";
 export { default as Clients } from "./home-page/Clients";
+export {default as X } from "./home-page/X";
 
 
-import {default as Services} from "./services-page/serv";
+
 
 
 

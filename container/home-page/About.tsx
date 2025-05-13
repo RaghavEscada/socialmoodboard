@@ -39,6 +39,7 @@ const services = [
   }
 ];
 
+
 // LogoCloud component defined separately
 
 
@@ -115,7 +116,7 @@ export default function About() {
             {/* Content Section */}
             <div className={`w-full lg:w-1/2 ${index % 2 === 0 ? 'lg:pl-12' : 'lg:pr-12'}`}>
               <div className="w-16 h-0.5 mb-10" style={{ backgroundColor: service.color }}></div>
-              <h3 className="text-5xl font-normal mb-8 text-red-500 opacity-100 font-['Gilda_Display']">
+              <h3 className="text-5xl font-normal mb-8 text-red-600 opacity-100 font-['Gilda_Display']">
                 {service.title}
               </h3>
               <p className="text-white opacity-100 font-light text-lg leading-relaxed mb-8 font-['Gilda_Display']">
@@ -146,7 +147,7 @@ export default function About() {
               href={item.href}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center text-white opacity-40 hover:text-red-600 font-light transition-all duration-300 gap-2"
+              className="flex items-center text-white opacity-40 hover:text-red-900 font-light transition-all duration-300 gap-2"
             >
               {item.icon}
               <span>{item.title}</span>
@@ -157,7 +158,7 @@ export default function About() {
 
       {/* About the Founder Section */}
       <div className="pt-24 relative z-10 bg-[#494949] py-20">
-        <h2 className="text-7xl font-bold mb-12 text-center font-['Gilda_Display'] text-white opacity-80">
+        <h2 className="text-7xl  mb-12 text-center font-['Gilda_Display'] text-white opacity-80">
           Objective of  <span className="italic text-red-600">Social Moodboard</span>
         </h2>
 
@@ -178,7 +179,7 @@ export default function About() {
             </p>
             <a
               href="/about"
-              className="px-8 py-4 bg-gradient-to-r from-red-600 to-red-700 text-white font-light rounded-full hover:shadow-lg hover:translate-y-px transition-all duration-300 flex items-center gap-2 font-['Gilda_Display']"
+              className="px-8 py-4 bg-gradient-to-r from-red-600 to-red-900 text-white font-light rounded-full hover:shadow-lg hover:translate-y-px transition-all duration-300 flex items-center gap-2 font-['Gilda_Display']"
             >
               Learn More About Me
             </a>

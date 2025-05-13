@@ -18,7 +18,7 @@ const navItems = [
   {
     id: 2,
     title: "Works",
-    href: "/rev-works",
+    href: "/works",
     icon: AiOutlineFundProjectionScreen
   },
   // Logo placeholder for layout (actual logo is rendered separately)

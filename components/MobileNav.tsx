@@ -23,7 +23,7 @@ const navItems = [
   {
     id: 3,
     title: "Works",
-    href: "/rev-works",
+    href: "/works",
     icon: AiOutlineFundProjectionScreen
   },
 ];

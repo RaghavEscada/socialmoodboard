@@ -4,6 +4,7 @@ import { Curve, Ready } from "@/components";
 import { About, Clients, Hero, Projects } from "@/container";
 
 
+
 export default function Home() {
   useEffect(() => {
     (async () => {
@@ -27,6 +28,7 @@ export default function Home() {
           <Hero />
          
           <About />
+    
           <Projects />
           <Clients />
           <Ready />
