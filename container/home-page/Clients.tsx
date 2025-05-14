@@ -1,15 +1,11 @@
 "use client";
-import Link from "next/link";
-import Image from "next/image";
-import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import { AnimatedTestimonialsDemo } from "@/data/data";
+
+import { cn } from "@/lib/utils";
+
 
 export default function Clients() {
   return (
     <section className="padding-y">
-      
-
       <Testimonial />
     </section>
   );
@@ -17,17 +13,17 @@ export default function Clients() {
 
 const Testimonial = () => {
   return (
-    <div className="relative flex h-auto w-full flex-col items-center font-['Gilda_Display'] justify-center overflow-hidden rounded-lg border bg-background md:shadow-xl">
+    <div className="relative flex h-auto w-full flex-col items-center font-['Gilda_Display'] justify-center overflow-hidden rounded-lg border bg-black md:shadow-xl">
       <div className="mx-auto max-w-4xl p-4 text-center sm:py-14">
-        <h1 className="mb-4 text-7xl  font-['Gilda_Display'] text-black dark:text-black md:text-5xl">
+        <h1 className="mb-4 text-7xl font-['Gilda_Display'] text-white dark:text-white md:text-5xl">
           Empowering
           <br />
-          <span className="bg-red-800 bg-clip-text text-transparent italic">
+          <span className="bg-red-700 bg-clip-text text-transparent italic">
           Individuals & Businesses
           </span>
         </h1>
-        <p className="text-3xl p-7 text-black italic dark:text-black md:text-xl">
-        "Ordinary doesn’t live here. We craft the extraordinary, one bold idea at a time."
+        <p className="text-3xl p-7 text-white italic dark:text-white md:text-xl">
+        "Ordinary doesn't live here. We craft the extraordinary, one bold idea at a time."
         </p>
       </div>
 
@@ -47,8 +43,8 @@ const Testimonial = () => {
         ))}
       </Marquee>
 
-      <div className="pointer-events-none absolute inset-y-0 left-0 w-1/3 bg-gradient-to-r from-ray-500 dark:from-background"></div>
-      <div className="pointer-events-none absolute inset-y-0 right-0 w-1/3 bg-gradient-to-l from-white dark:from-background"></div>
+      <div className="pointer-events-none absolute inset-y-0 left-0 w-1/3 bg-gradient-to-r from-black dark:from-black"></div>
+      <div className="pointer-events-none absolute inset-y-0 right-0 w-1/3 bg-gradient-to-l from-black dark:from-black"></div>
     </div>
   );
 };
@@ -67,13 +63,13 @@ const ReviewCard = ({ img, name, email, description }: any) => {
           src={img}
         />
         <div className="flex flex-col">
-          <figcaption className="text-sm font-medium dark:text-black">
+          <figcaption className="text-sm font-medium text-white dark:text-white">
             {name}
           </figcaption>
-          <p className="text-xs font-medium dark:text-white/40">{email}</p>
+          <p className="text-xs font-medium text-white/60 dark:text-white/40">{email}</p>
         </div>
       </div>
-      <blockquote className="mt-2 text-sm">{description}</blockquote> 
+      <blockquote className="mt-2 text-sm text-white">{description}</blockquote> 
     </figure>
   );
 };
@@ -123,7 +119,7 @@ const secondRow = testimonials.slice(
   2 * Math.ceil(testimonials.length / 3),
 );
 const thirdRow = testimonials.slice(2 * Math.ceil(testimonials.length / 3));
-
+ 
 interface MarqueeProps {
   className?: string;
   reverse?: boolean;
@@ -133,7 +129,7 @@ interface MarqueeProps {
   repeat?: number;
   [key: string]: any;
 }
-
+ 
 function Marquee({
   className,
   reverse,
@@ -146,20 +142,26 @@ function Marquee({
   return (
     <div
       {...props}
-      className={`group flex overflow-hidden p-2 [--duration:40s] [--gap:1rem] [gap:var(--gap)] ${
-        vertical ? "flex-col" : "flex-row"
-      } ${className}`}
+      className={cn(
+        "group flex overflow-hidden p-2 [--duration:40s] [--gap:1rem] [gap:var(--gap)]",
+        {
+          "flex-row": !vertical,
+          "flex-col": vertical,
+        },
+        className,
+      )}
     >
       {Array(repeat)
         .fill(0)
         .map((_, i) => (
           <div
             key={i}
-            className={`flex shrink-0 justify-around [gap:var(--gap)] ${
-              vertical ? "animate-marquee-vertical flex-col" : "animate-marquee flex-row"
-            } ${pauseOnHover ? "group-hover:[animation-play-state:paused]" : ""} ${
-              reverse ? "[animation-direction:reverse]" : ""
-            }`}
+            className={cn("flex shrink-0 justify-around [gap:var(--gap)]", {
+              "animate-marquee flex-row": !vertical,
+              "animate-marquee-vertical flex-col": vertical,
+              "group-hover:[animation-play-state:paused]": pauseOnHover,
+              "[animation-direction:reverse]": reverse,
+            })}
           >
             {children}
           </div>

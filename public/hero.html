@@ -4,58 +4,45 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Social Moodboard</title>
-  <!-- Load GSAP and plugins from CDN with specific versions that are known to work -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.4/gsap.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.4/CustomEase.min.js"></script>
-  <script src="https://unpkg.com/split-type@0.2.5/umd/index.min.js"></script>
+
   <style>
-          
-          @import url('https://fonts.googleapis.com/css2?family=Gilda+Display&display=swap');
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
     }
 
+    html,
     body {
-      font-family: "Gilda Display", serif;
-      background-color: #6c6c64ca;
-      overflow: hidden; /* Prevent scrollbars from video */
-    }
-
-    /* Video background styles */
-    .video-background {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      z-index: -1;
+      font-family: "Sharp Grotesk";
       overflow: hidden;
     }
 
-    .video-background video {
+    .loader {
+      position: fixed;
+      width: 100vw;
+      height: 100vh;
+      background: #000;
+      clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
+      pointer-events: none;
+      z-index: 100;
+    }
+
+    .loader-imgs {
+      width: 150%;
       position: absolute;
-      min-width: 100%;
-      min-height: 100%;
-      width: auto;
-      height: auto;
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
-      object-fit: cover;
+      display: flex;
+      gap: 50px;
+      clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
     }
 
-    /* Video overlay for better content visibility */
-    .video-overlay {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background-color: rgba(108, 108, 100, 0.4); /* Match original background with opacity */
-      z-index: -1;
+    .img {
+      position: relative;
+      flex: 1;
+      clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
     }
 
     img {
@@ -64,314 +51,344 @@
       object-fit: cover;
     }
 
-    p {
-      text-transform: uppercase;
-      font-family: "Gilda Display", serif;
+    /* Video background */
+    .video-bg {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: -1;
+    }
+
+    nav {
+      width: 100%;
+      padding: 30px;
+      display: flex;
+      align-items: center;
+      font-family: "Neue Montreal";
+    }
+
+    .nav-item {
+      position: relative;
+      flex: 1;
+    }
+
+    .nav-item:nth-child(2) {
+      text-align: center;
+      font-family: "PP Editorial Old";
+      font-size: 24px;
+      font-weight: 500;
+    }
+
+    .nav-item:nth-child(3) {
+      text-align: right;
+    }
+
+    #logo a {
+      text-transform: none;
     }
 
     a {
       text-decoration: none;
       text-transform: uppercase;
-      font-family: "Gilda Display", serif;
-      font-size: 0.7rem;
       color: #000;
     }
 
-    .overlay {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 100svh;
-      padding: 2em;
-      background-color: #000;
-      color: #fff;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      overflow: hidden;
-      z-index: 10; /* Ensure overlay is above video */
-    }
-
-    .loader {
-      text-align: center;
-    }
-
-    .sm-logo {
-      max-width: 300px;
-      height: auto;
-    }
-
-    .banner-img {
-      position: absolute;
-      top: 45%;
-      transform: translate(-50%, -50%) scale(0);
-      aspect-ratio: 4/5;
-      z-index: 3; /* Default z-index for banner images */
-      box-shadow: 0 10px 25px rgba(0,0,0,0.3);
-    }
-
-    .banner-img-1 {
-      left: 38%;
-      width: 18%;
-      z-index: 3; /* Behind the middle image */
-    }
-
-    .banner-img-2 {
-      left: 50%;
-      width: 24%;
-      z-index: 5; /* Highest z-index to appear in front */
-    }
-
-    .banner-img-3 {
-      left: 62%;
-      width: 18%;
-      z-index: 3; /* Behind the middle image */
-    }
-
-    .intro-copy {
+    .hero {
+      width: 100%;
       position: absolute;
       top: 45%;
       transform: translateY(-50%);
-      width: 100%;
-      padding: 7;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      z-index: 4; /* Ensure intro copy is above video */
-    }
-
-    .title {
-      position: absolute;
-      bottom: 10%;
-      left: 50%;
-      transform: translateX(-50%);
-      z-index: 4; /* Ensure title is above video */
-    }
-
-    .intro-copy h3,
-    .title h1 {
-      position: relative;
       text-transform: uppercase;
-      color: #fff; /* Changed to white for better visibility against video */
-      font-family: "Gilda Display", serif;
-      font-weight: 500;
-      font-style: italic;
-      line-height: 0.9;
-      text-shadow: 0 2px 4px rgba(0,0,0,0.5); /* Add shadow for better readability */
+      font-family: "PP Migra";
     }
 
-    .title h1 {
-      font-size: 6rem;
+    .h1,
+    .h3 {
+      width: 100%;
+      text-align: center;
+      color:aliceblue;
+      font-size: 4vw;
+      clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
     }
 
-    .intro-copy h3 {
-      font-size: 3rem;
+    .h4{
+
     }
 
-    .intro-copy h3,
-    .title h1 {
-      clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
-    }
-
-    .intro-copy h3 .word,
-    .title h1 .word {
-      display: inline-block;
+    h1 {
       position: relative;
-      will-change: transform;
-      margin-right: 0.1rem;
+      font-weight: 400;
+      line-height: 85%;
     }
 
-    @media (max-width: 900px) {
-      .loader {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-      }
+    h1 span {
+      font-family: "Sharp Grotesk";
+      font-weight: 700;
+    }
 
-      .intro-copy,
-      .banner-img {
-        display: none;
-      }
+    .text-center {
+      text-align: center;
+      display: block;
+    }
 
-      .title {
-        width: 100%;
-        bottom: 20%;
-        display: flex;
-        justify-content: center;
-      }
+    footer {
+      width: 100%;
+      position: absolute;
+      bottom: 30px;
+      right: 0;
+      overflow: hidden;
+      clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
+    }
 
-      .title h1 {
-        font-size: 4rem;
-      }
+    .marquee-container {
+      display: flex;
+      gap: 10px;
+      position: relative;
+      width: 100%;
+    }
 
-      .intro-copy h3 {
-        font-size: 2.5rem;
-      }
+    .marquee-track {
+      display: flex;
+      gap: 10px;
+      position: relative;
+    }
+
+    .item {
+      position: relative;
+      width: 100px;
+      height: 100px;
+      flex-shrink: 0;
     }
   </style>
 </head>
 
 <body>
-  <!-- Add video background -->
-  <div class="video-background">
-    <video autoplay loop muted playsinline>
-      <source src="sm.mp4" type="video/mp4">
-      Your browser does not support the video tag.
+  <div class="container">
+    <!-- Video background - adding controls for debugging -->
+    <video class="video-bg" autoplay muted loop playsinline id="background-video">
+      <source src="/sm.mp4" type="video/mp4">
     </video>
-  </div>
-  <div class="video-overlay"></div>
 
-  <div class="overlay">
     <div class="loader">
-      <img src="smlogo.png" alt="Social Moodboard Logo" class="sm-logo" />
+      <div class="loader-imgs">
+        <div class="img">
+          <img src="/img1.jpg" alt="" />
+        </div>
+        <div class="img">
+          <img src="/img2.jpg" alt="" />
+        </div>
+        <div class="img">
+          <img src="/img3.jpg" alt="" />
+        </div>
+        <div class="img" id="loader-logo">
+          <img src="/smlogo.png" alt="" />
+        </div>
+        <div class="img">
+          <img src="/img4.jpg" alt="" />
+        </div>
+        <div class="img">
+          <img src="/img5.jpg" alt="" />
+        </div>
+        <div class="img">
+          <img src="/img6.jpg" alt="" />
+        </div>
+      </div>
+    </div>
+    <div class="website-content">
+     
+      <div class="hero">
+        <div class="h1">
+          <h1>we don't do </h1>
+        </div>
+        <div class="h1">
+          <h1>ordinary here.</h1>
+        </div>
+
+        <div class="h4">
+          <h1><span class="text-center text-red-600 italic">period*</span></h1>
+        </div>
+      </div>
+      <footer>
+        <div class="marquee-container">
+          <div class="marquee-track">
+            <div class="item">
+              <img src="/img1.jpg" alt="" />
+            </div>
+            <div class="item">
+              <img src="/img2.jpg" alt="" />
+            </div>
+            <div class="item">
+              <img src="/img3.jpg" alt="" />
+            </div>
+            <div class="item">
+              <img src="/img4.jpg" alt="" />
+            </div>
+            <div class="item">
+              <img src="/img5.jpg" alt="" />
+            </div>
+            <div class="item">
+              <img src="/img6.jpg" alt="" />
+            </div>
+
+            <div class="item">
+              <img src="/img7.jpg" alt="" />
+            </div>
+            <div class="item">
+              <img src="/img8.jpg" alt="" />
+            </div>
+            <div class="item">
+              <img src="/img9.jpg" alt="" />
+            </div>
+            <div class="item">
+              <img src="/img10.jpg" alt="" />
+            </div>
+            <!-- Duplicate items for seamless loop -->
+
+
+
+            <!-- Duplicate items for seamless loop -->
+            <div class="item">
+              <img src="/img7.jpg" alt="" />
+            </div>
+            <div class="item">
+              <img src="/img8.jpg" alt="" />
+            </div>
+            <div class="item">
+              <img src="/img9.jpg" alt="" />
+            </div>
+            <div class="item">
+              <img src="/img10.jpg" alt="" />
+            </div>
+            <div class="item">
+              <img src="/img1.jpg" alt="" />
+            </div>
+            <div class="item">
+              <img src="/img2.jpg" alt="" />
+            </div>
+            <div class="item">
+              <img src="/img3.jpg" alt="" />
+            </div>
+            <div class="item">
+              <img src="/img4.jpg" alt="" />
+            </div>
+            <div class="item">
+              <img src="/img5.jpg" alt="" />
+            </div>
+            <div class="item">
+              <img src="/img6.jpg" alt="" />
+            </div>
+            <div class="item">
+              <img src="/img4.jpg" alt="" />
+            </div>
+            <div class="item">
+              <img src="/img5.jpg" alt="" />
+            </div>
+            <div class="item">
+              <img src="/img6.jpg" alt="" />
+            </div>
+            <div class="item">
+              <img src="/img4.jpg" alt="" />
+            </div>
+            <div class="item">
+              <img src="/img5.jpg" alt="" />
+            </div>
+            <div class="item">
+              <img src="/img4.jpg" alt="" />
+            </div>
+           
+
+           
+            <!-- Duplicate items for seamless loop -->
+
+
+          </div>
+        </div>
+      </footer>
     </div>
   </div>
-
-  <div class="banner-img banner-img-1"><img src="img4.jpeg" alt="" /></div>
-  <div class="banner-img banner-img-2"><img src="img1.jpeg" alt="" /></div>
-  <div class="banner-img banner-img-3"><img src="img2.jpeg" alt="" /></div>
-  
-  <div class="intro-copy">
-    <h3 >We Don't Do</h3>
-    <h3>Ordinary Here</h3>
-  </div>
-
- 
-
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
   <script>
-    // Use a flag to ensure animations only run once
-    let animationHasRun = false;
-    
-    document.addEventListener("DOMContentLoaded", () => {
-      // Only run animation if it hasn't run yet
-      if (animationHasRun) return;
-      animationHasRun = true;
-      
-      if (typeof gsap === 'undefined') {
-        console.error("GSAP not loaded, please check the script tag");
-        document.querySelector('.overlay').style.opacity = 0;
-        return;
-      }
-      
-      // Register the CustomEase plugin properly
-      gsap.registerPlugin(CustomEase);
-      
-      // Check if SplitType exists before using it
-      let introCopy, titleHeading;
-      if (typeof SplitType !== 'undefined') {
-        introCopy = new SplitType(".intro-copy h3", {
-          types: "words",
-          absolute: false,
-        });
+    document.addEventListener("DOMContentLoaded", function () {
+      // Debug video playback
+      const video = document.getElementById('background-video');
+      console.log("Video element:", video);
 
-        titleHeading = new SplitType(".title h1", {
-          types: "words",
-          absolute: false,
-        });
-      } else {
-        console.warn("SplitType not available, using fallback");
-        // Simple fallback for SplitType
-        document.querySelectorAll(".intro-copy h3, .title h1").forEach(el => {
-          const words = el.textContent.split(' ');
-          el.innerHTML = '';
-          words.forEach(word => {
-            const span = document.createElement('span');
-            span.className = 'word';
-            span.textContent = word + ' ';
-            el.appendChild(span);
-          });
-        });
-        
-        introCopy = { words: document.querySelectorAll(".intro-copy h3 .word") };
-        titleHeading = { words: document.querySelectorAll(".title h1 .word") };
-      }
-
-      // Initial states
-      gsap.set(introCopy.words, {
-        y: "110%",
+      // Force play the video
+      video.play().catch(e => {
+        console.error("Video play failed:", e);
       });
 
-      gsap.set(titleHeading.words, {
-        y: "110%",
-      });
-      
-      // Simple animation sequence
-      const timeline = gsap.timeline({
-        onComplete: function() {
-          // Remove the overlay element completely after animation
-          const overlay = document.querySelector('.overlay');
-          if (overlay && overlay.parentNode) {
-            overlay.parentNode.removeChild(overlay);
-          }
-        }
-      });
-      
-      // 1. Logo fade in
-      timeline.fromTo(".sm-logo", 
-        { opacity: 0 },
-        { 
-          opacity: 1, 
-          duration: 1.5,
-          ease: "power2.inOut"
-        }
-      );
-      
-      // 2. Delay, then fade out the entire overlay
-      timeline.to(".overlay", {
-        opacity: 0,
-        duration: 2,
-        delay: 1,
-        ease: "power2.inOut",
-        onComplete: () => {
-          // 3. After overlay is gone, show the images
-          gsap.to(".banner-img", { 
-            scale: 1, 
+      gsap.set(".img", { y: 500 });
+      gsap.set(".loader-imgs", { x: 500 });
+      gsap.set(".nav-item", { y: 25, opacity: 0 });
+      gsap.set("h1, .item, footer", { y: 200 });
+
+      const tl = gsap.timeline({ delay: 1 });
+
+      tl.to(".img", {
+        y: 0,
+        duration: 1.5,
+        stagger: 0.05,
+        ease: "power3.inOut",
+      })
+        .to(
+          ".loader-imgs",
+          {
+            x: 0,
+            duration: 3,
+            ease: "power3.inOut",
+          },
+          "-=2.5"
+        )
+        .to(
+          ".img:not(#loader-logo)",
+          {
+            clipPath: "polygon(0% 0%, 100% 0%, 100% 0%, 0% 0%)",
             duration: 1,
-            stagger: 0.2,
-            ease: "back.out(1.4)"
-          });
-          
-          // 4. Position the images
-          gsap.to(".banner-img-1", {
-            left: "38%",
-            rotate: -6,
-            duration: 1.2,
-            ease: "power2.out"
-          });
-          
-          gsap.to(".banner-img-2", {
-            left: "50%",
-            rotate: 0,
-            duration: 1.2,
-            ease: "power2.out"
-          });
-          
-          gsap.to(".banner-img-3", {
-            left: "62%",
-            rotate: 6,
-            duration: 1.2,
-            ease: "power2.out"
-          });
-          
-          // 5. Show text elements after images
-          gsap.to(titleHeading.words, {
-            y: "0%",
-            duration: 0.9,
-            stagger: 0.08,
-            delay: 0.5,
-            ease: "power3.out",
-          });
-          
-          gsap.to(introCopy.words, {
-            y: "0%",
-            duration: 0.9,
-            stagger: 0.08,
-            delay: 0.7,
-            ease: "power3.out",
-          });
-        }
+            stagger: 0.1,
+            ease: "power3.inOut",
+          },
+          "-=1"
+        )
+        .to(
+          ".loader",
+          {
+            clipPath: "polygon(0% 0%, 100% 0%, 100% 0%, 0% 0%)",
+            duration: 1,
+            ease: "power3.inOut",
+          },
+          "-=0.5"
+        )
+        .to(
+          ".nav-item, h1, footer, .item",
+          {
+            y: 0,
+            opacity: 1,
+            stagger: 0.1,
+            duration: 1,
+            ease: "power3.inOut",
+          },
+          "-=0.5"
+        );
+
+      // Set up the marquee animation after the initial animation completes
+      tl.add(() => {
+        // Get the width of one set of items
+        const trackWidth = document.querySelector('.marquee-track').offsetWidth / 2;
+
+        // Create the infinite marquee animation
+        gsap.to(".marquee-track", {
+          x: -trackWidth,
+          duration: 15,
+          ease: "none",
+          repeat: -1, // Infinite repeat
+          onRepeat: function () {
+            gsap.set(".marquee-track", { x: 0 });
+          }
+        });
       });
     });
   </script>

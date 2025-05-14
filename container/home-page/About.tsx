@@ -32,11 +32,19 @@ const services = [
   },
   {
     id: 4,
+    title: "Website Development",
+    description: "Forward-thinking approaches to position your brand for long-term success. We develop comprehensive roadmaps that align with your business objectives while maintaining flexibility for emerging trends.",
+    color: "#ff2d20", // Red-600 color
+    src: "/web.png",
+  },
+  {
+    id: 5,
     title: "Digital Strategy & Beyond",
     description: "Forward-thinking approaches to position your brand for long-term success. We develop comprehensive roadmaps that align with your business objectives while maintaining flexibility for emerging trends.",
     color: "#ff2d20", // Red-600 color
     src: "/ds.png",
   }
+  
 ];
 
 

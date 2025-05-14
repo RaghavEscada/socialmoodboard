@@ -1,10 +1,9 @@
 "use client";
 import { useState, useEffect, useRef } from "react";
 import { Instagram, Linkedin, MessageCircle, ChevronRight } from "lucide-react";
-import { Ready } from "@/components";
 import { Curve } from "@/components/Curve";
 import Script from "next/script";
-import { Footer } from "@/components";
+
 
 const socialLinks = [
   { id: 1, title: "Instagram", href: "https://www.instagram.com/thesocialmoodboard/", icon: <Instagram size={20} /> },
