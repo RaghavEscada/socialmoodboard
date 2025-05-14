@@ -1,7 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-import { LinkHover, TextMask } from "@/animation";
-import { ImageError } from "next/dist/server/image-optimizer";
+
 
 export default function Footer() {
   return (
@@ -15,14 +14,16 @@ export default function Footer() {
             <Link href="/">
               <div className="flex items-center gap-2 mb-3">
                 <div className="w-32 h-32 rounded-md flex items-center justify-center">
-					<Image 
-						src="/smlogo.png" 
-						alt="Social Moodboard Logo"
-						height={1500}
-						width={1500}
-					/>
+                  <Image
+                    src="/smlogo.png"
+                    alt="Social Moodboard Logo"
+                    height={1500}
+                    width={1500}
+                  />
                 </div>
-                <span className="text-4xl font-['Gilda_Displa']">We Don't Do <span className="italic text-red-600">Ordinary</span></span>
+                <span className="text-4xl font-[&apos;Gilda_Display&apos;]">
+                  We Don&apos;t Do <span className="italic text-red-600">Ordinary</span>
+                </span>
               </div>
             </Link>
             <p className="text-sm text-gray-400">© copyright Social Moodboard 2025. All rights reserved.</p>
@@ -38,7 +39,7 @@ export default function Footer() {
                 <li><Link href="/studio" className="hover:text-gray-300">Works</Link></li>
                 <li><Link href="/clients" className="hover:text-gray-300">About</Link></li>
                 <li><Link href="/pricing" className="hover:text-gray-300">Contact</Link></li>
-               
+
               </ul>
             </div>
 
@@ -59,19 +60,19 @@ export default function Footer() {
               <ul className="space-y-4">
                 <li><Link href="/privacy-policy" className="hover:text-gray-300">Privacy Policy</Link></li>
                 <li><Link href="/terms-of-service" className="hover:text-gray-300">Terms of Service</Link></li>
-                
+
               </ul>
             </div>
           </div>
         </div>
       </div>
-      
+
       {/* Large DevStudio text at bottom with full width */}
       <div className="w-full mt-16 overflow-hidden">
-      <h1 className="text-7xl text-center
+        <h1 className="text-7xl text-center
        md:text-7xl  lg:text-8xl font-bold text-secondary opacity-30 leading-none">
-SOCIAL MOODBOARD
-</h1>
+          SOCIAL MOODBOARD
+        </h1>
       </div>
     </footer>
   );

@@ -1,9 +1,9 @@
 "use client";
 import { Instagram, Linkedin, MessageCircle, ChevronRight } from "lucide-react";
-import { useRef, useEffect } from "react";
+import { useEffect } from "react";
+import Link from "next/link";
+import Image from "next/image";
 import { Ready } from "@/components";
-import { LampDemoServ } from "@/data/data";
-
 
 const socialLinks = [
   { id: 1, title: "Instagram", href: "https://www.instagram.com/thesocialmoodboard/", icon: <Instagram size={20} /> },
@@ -47,17 +47,9 @@ const services = [
     color: "#ff2d20", // Red-600 color
     src: "/ds.png",
   }
-  
 ];
 
-
-// LogoCloud component defined separately
-
-
 export default function About() {
-
-  const containerRef = useRef(null);
-
   useEffect(() => {
     // If you still want to manually initialize Locomotive Scroll
     // (though using LocomotiveScrollProvider is recommended)
@@ -73,14 +65,8 @@ export default function About() {
     })();
   }, []);
 
-
-
   return (
-    
     <section className="w-full bg-[#494949] py-32 px-8 sm:px-12 lg:px-16 relative overflow-hidden">
-      {/* Refined background elements with reduced opacity */}
-
-     
       {/* Header Section - Added more vertical spacing */}
       <div className="text-center max-w-4xl mx-auto relative z-10 mb-40">
         <div className="mb-12">
@@ -93,29 +79,29 @@ export default function About() {
           Welcome to <span className="text-red-600 italic">The Social Moodboard</span>
         </h1>
 
-        <p className="text-white opacity-100 text-2xl max-w-2xl mx-auto font-light leading-relaxed mt-6 font-['Gilda_Display']">
-          We craft bespoke social media strategies, visual identities, optimization solutions, and forward-thinking digital strategies that elevate your brand's presence.
+        <p className="text-white opacity-100 text-2xl max-w-2xl mx-auto font-light leading-relaxed mt-6 font-[&quot;Gilda_Display&quot;]">
+          We craft bespoke social media strategies, visual identities, optimization solutions, and forward-thinking digital strategies that elevate your brand&apos;s presence.
         </p>
 
         <div className="mt-16 flex flex-wrap justify-center gap-8">
-          <a
+          <Link
             href="/contact"
-            className="px-10 py-4 bg-gradient-to-r from-red-600 to-red-700 text-white font-light rounded-full hover:shadow-lg hover:translate-y-px transition-all duration-300 flex items-center gap-2 font-['Gilda_Display']"
+            className="px-10 py-4 bg-gradient-to-r from-red-600 to-red-700 text-white font-light rounded-full hover:shadow-lg hover:translate-y-px transition-all duration-300 flex items-center gap-2 font-[&quot;Gilda_Display&quot;]"
           >
             Start a Project <ChevronRight size={16} />
-          </a>
-          <a
+          </Link>
+          <Link
             href="/services"
-            className="px-10 py-4 bg-[#494949] text-white opacity-100 font-light rounded-full hover:bg-gray-600 transition-all duration-300 border border-gray-800 shadow-sm font-['Gilda_Display']"
+            className="px-10 py-4 bg-[#494949] text-white opacity-100 font-light rounded-full hover:bg-gray-600 transition-all duration-300 border border-gray-800 shadow-sm font-[&quot;Gilda_Display&quot;]"
           >
             Explore Services
-          </a>
+          </Link>
         </div>
       </div>
 
       {/* Services Section - With Images */}
       <div id="services" className="w-full max-w-6xl mx-auto relative z-10 mb-40">
-        <h2 className="text-6xl font-normal mb-24 text-center font-['Gilda_Display'] text-white opacity-100">
+        <h2 className="text-6xl font-normal mb-24 text-center font-[&quot;Gilda_Display&quot;] text-white opacity-100">
           Our Expertise
         </h2>
 
@@ -136,9 +122,11 @@ export default function About() {
                   }}
                 ></div>
                 <div className="relative overflow-hidden rounded-2xl shadow-lg">
-                  <img
+                  <Image
                     src={service.src}
                     alt={service.title}
+                    width={800}
+                    height={600}
                     className="w-full h-auto object-cover aspect-[4/3] transition-transform duration-700 group-hover:scale-105 opacity-100"
                   />
                 </div>
@@ -148,19 +136,19 @@ export default function About() {
             {/* Content Section */}
             <div className={`w-full lg:w-1/2 ${index % 2 === 0 ? 'lg:pl-12' : 'lg:pr-12'}`}>
               <div className="w-16 h-0.5 mb-10" style={{ backgroundColor: service.color }}></div>
-              <h3 className="text-5xl font-normal mb-8 text-red-600 opacity-100 font-['Gilda_Display']">
+              <h3 className="text-5xl font-normal mb-8 text-red-600 opacity-100 font-[&quot;Gilda_Display&quot;]">
                 {service.title}
               </h3>
-              <p className="text-white opacity-100 font-light text-lg leading-relaxed mb-8 font-['Gilda_Display']">
+              <p className="text-white opacity-100 font-light text-lg leading-relaxed mb-8 font-[&quot;Gilda_Display&quot;]">
                 {service.description}
               </p>
-              <a
+              <Link
                 href={`/services/${service.id}`}
-                className="inline-flex items-center gap-2 opacity-45 text-white hover:text-red-500 font-['Gilda_Display'] group/link"
+                className="inline-flex items-center gap-2 opacity-45 text-white hover:text-red-500 font-[&quot;Gilda_Display&quot;] group/link"
               >
                 <span>Discover More</span>
                 <ChevronRight size={16} className="transition-transform duration-300 group-hover/link:translate-x-1" />
-              </a>
+              </Link>
             </div>
           </div>
         ))}
@@ -168,7 +156,7 @@ export default function About() {
 
       {/* Social Links Section - More elegant spacing */}
       <div className="pt-24 border-t border-gray-800 relative z-10">
-        <h2 className="text-2xl font-normal mb-16 text-center font-['Gilda_Display'] text-white opacity-100">
+        <h2 className="text-2xl font-normal mb-16 text-center font-[&quot;Gilda_Display&quot;] text-white opacity-100">
           Connect With Us
         </h2>
 
@@ -190,41 +178,39 @@ export default function About() {
 
       {/* About the Founder Section */}
       <div className="pt-24 relative z-10 bg-[#494949] py-20">
-        <h2 className="text-7xl  mb-12 text-center font-['Gilda_Display'] text-white opacity-80">
-          Objective of  <span className="italic text-red-600">Social Moodboard</span>
+        <h2 className="text-7xl mb-12 text-center font-[&quot;Gilda_Display&quot;] text-white opacity-80">
+          Objective of <span className="italic text-red-600">Social Moodboard</span>
         </h2>
 
         <div className="flex flex-col lg:flex-row items-center justify-center gap-16 mx-auto max-w-7xl">
           {/* Image Section */}
           <div className="w-64 h-64 lg:w-80 lg:h-80 rounded-full overflow-hidden shadow-xl">
-            <img
+            <Image
               src="/founder-image.jpg"  // Replace with actual image path
               alt="Vishishta Banerjee"
+              width={320}
+              height={320}
               className="w-full h-full object-cover opacity-100"
             />
           </div>
 
           {/* Text Section */}
           <div className="max-w-xl text-center lg:text-left">
-            <p className="text-white opacity-100 text-lg font-light mb-6 font-['Gilda_Display']">
-              With over four years of experience, I, <strong>Vishishta Banerjee</strong>, have worked with brands across industries, transforming their online presence. I create strategies that don't just "look good" but actually drive results. From F&B hotspots to corporate houses, I've helped businesses craft an identity, connect with their audience, and, most importantly—convert.
+            <p className="text-white opacity-100 text-lg font-light mb-6 font-[&quot;Gilda_Display&quot;]">
+              With over four years of experience, I, <strong>Vishishta Banerjee</strong>, have worked with brands across industries, transforming their online presence. I create strategies that don&apos;t just &quot;look good&quot; but actually drive results. From F&B hotspots to corporate houses, I&apos;ve helped businesses craft an identity, connect with their audience, and, most importantly—convert.
             </p>
-            <a
+            <Link
               href="/about"
-              className="px-8 py-4 bg-gradient-to-r from-red-600 to-red-900 text-white font-light rounded-full hover:shadow-lg hover:translate-y-px transition-all duration-300 flex items-center gap-2 font-['Gilda_Display']"
+              className="px-8 py-4 bg-gradient-to-r from-red-600 to-red-900 text-white font-light rounded-full hover:shadow-lg hover:translate-y-px transition-all duration-300 flex items-center gap-2 font-[&quot;Gilda_Display&quot;]"
             >
               Learn More About Me
-            </a>
+            </Link>
           </div>
         </div>
       </div>
       <div className="w-full h-full">
-
         <Ready/>
-        
       </div>
-
-
     </section>
   );
 }
