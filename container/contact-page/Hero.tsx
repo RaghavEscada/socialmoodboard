@@ -4,10 +4,10 @@ import { motion } from "framer-motion";
 
 export default function Hero() {
 	return (
-		<section className="w-full padding-x">
-			<div className="w-full flex flex-col">
-				<div className="w-full margin">
-					<h1 className="heading tracking-[-1.3px] text-[#212121] font-semibold font-FoundersGrotesk uppercase">
+		<section className="w-full padding-x bg-[#494949]">
+			<div className="w-full flex flex-col bg-[#494949]">
+				<div className="w-full margin bg-[#494949]">
+					<h1 className="heading tracking-[-1.3px] bg-[#494949] text-[#212121] font-semibold font-FoundersGrotesk uppercase">
 						<div className="flex items-center gap-[5px]">
 							<motion.span
 								initial={{ width: 0 }}
@@ -32,8 +32,8 @@ export default function Hero() {
 						A PROJECT TOGETHER
 					</h1>
 				</div>
-				<div className="w-full pb-[15px]">
-					<h3 className="paragraph font-medium text-secondry font-NeueMontreal">
+				<div className="w-full pb-[15px] bg-[#494949]">
+					<h3 className="paragraph font-medium text-secondry bg-[#494949] font-NeueMontreal">
 						Fill the form below:
 					</h3>
 				</div>

@@ -1,328 +1,1851 @@
-import { AnimatedTestimonials } from "@/components/ui/animated-testimonials";
-import { Timeline } from "@/components/ui/timeline";
-import { TextHoverEffect } from "@/components/ui/text-hover-effect";
-import { LampContainer } from "@/components/ui/lamp";
-import { HeroParallax } from "@/components/ui/hero-parallax";
-import {ThreeDMarquee} from "@/components/ui/3d-marquee";
+"use client";
+import { useState } from "react";
+import { Lens } from "@/components/ui/lens";
 
+import { motion } from "motion/react";
+import { cn } from "@/lib/utils";
 
+export function Lens1() {
+  const [hovering, setHovering] = useState(false);
 
-import React from "react";
-import Image from "next/image";
-import Link from "next/link";
-import { motion, useScroll, useTransform } from "motion/react";
-
-
-export function AnimatedTestimonialsDemo() {
-  const testimonials = [ {
-    quote:
-      "Medcity International is a leading pan-India institute for IELTS, German, and language training, with expert study abroad and India services.",
-    name: "Medcity International Academy",
-    designation: "Education",
-    src: "/b2.png",
-  },
-    {
-      quote:
-        "Soumya Shyam is a renowned celebrity makeup artist, trusted by top names across India for her signature style and flawless artistry.",
-      name: "Soumya Shayam",
-      designation: "Beauty Artist",
-      src: "/b5.png",
-    },
-    {
-      quote:
-        "BlackOnyx International LLC recruits talent from India, Oman, and Dubai, supplying top-tier staff to leading hotels and companies in Dubai and Oman, with strong expertise in hospitality and cleaning services.",
-      name: "Black Onyx",
-      designation: "Recruiting Agency",
-      src: "/b4.png",
-    },
-    {
-      quote:
-        "Gloria Global Ventures LLP specializes in IELTS, German, and language training, delivering focused, high-quality coaching to help students achieve global language proficiency.",
-      name: "Gloria Global Ventures LLP.",
-      designation: "Education",
-      src: "/b1.png",
-    },
-    {
-      quote:
-        "BamBrush specializes in eco-friendly bamboo brushes, supplying sustainable solutions to resorts and exporting globally.",
-      name: "Bam Brush",
-      designation: "natural product",
-      src: "/b3.png",
-    },
-    
-  ];
-  return <AnimatedTestimonials testimonials={testimonials} />;
-
-};
-
-
-
-
-
-export function TimelineDemo() {
-  const data = [
-    {
-      title: "Client Requirements & Discovery",
-      content: (
-        <div>
-          <p className="text-white dark:text-white text-lg md:text-xl font-normal mb-8">
-            Before crafting any strategy, we take the time to deeply understand your business, goals, and audience. Our team conducts thorough market research to align our approach with your brand identity.
-          </p>
-          <div className="flex justify-end gap-4">
-            <Image src="/1.jpeg" alt="Discovery Phase" width={250} height={250} layout="intrinsic" />
-            
-          </div>
-        </div>
-      ),
-    },
-    {
-      title: "Strategy & Planning",
-      content: (
-        <div>
-          <p className="text-white dark:text-white text-lg md:text-xl font-normal mb-8">
-            Our experts map out a strategic plan that includes content, branding, and tech solutions. Every decision is backed by data to ensure maximum impact.
-          </p>
-          <div className="flex justify-end gap-4">
-            <Image src="/2.jpeg" alt="Strategy Session" width={250} height={250} layout="intrinsic" />
-           
-          </div>
-        </div>
-      ),
-    },
-    {
-      title: "Execution & Implementation",
-      content: (
-        <div>
-          <p className="text-white dark:text-white text-lg md:text-xl font-normal mb-4">
-            Our team launches campaigns, develops websites, and executes branding strategies with precision, ensuring a seamless experience.
-          </p>
-          <div className="mb-8">
-            <div className="flex gap-2 items-center text-neutral-700 dark:text-neutral-300 text-lg md:text-xl">
-              𝌞 Content Strategy & Branding
-            </div>
-            <div className="flex gap-2 items-center text-neutral-700 dark:text-neutral-300 text-lg md:text-xl">
-              🖥️ Website & Tech Development
-            </div>
-            <div className="flex gap-2 items-center text-neutral-700 dark:text-neutral-300 text-lg md:text-xl">
-              📱 Social Media & Community Management
-            </div>
-            <div className="flex gap-2 items-center text-neutral-700 dark:text-neutral-300 text-lg md:text-xl">
-              💸 Paid Marketing & Ad Campaigns
-            </div>
-            <div className="flex gap-2 items-center text-neutral-700 dark:text-neutral-300 text-lg md:text-xl">
-              📈 Performance Analytics & Optimization
-            </div>
-          </div>
-          <div className="flex justify-end gap-4">
-            <Image src="/3.jpeg" alt="Execution Process" width={250} height={250} layout="intrinsic" />
-           
-          </div>
-        </div>
-      ),
-    },
-  ];
   return (
-    <div className="w-full bg-gray-900 p-8 rounded-xl">
-      <Timeline data={data} />
+    <div>
+      <div className="w-full relative rounded-3xl overflow-hidden max-w-md mx-auto bg-black p-8 my-10">
+        <Rays1/>
+        <Beams1 />
+        <div className="relative z-10">
+          <Lens hovering={hovering} setHovering={setHovering}>
+            <img
+              src="/i3.jpg"
+              alt="image"
+              width={500}
+              height={500}
+              className="rounded-2xl"
+            />
+          </Lens>
+          <motion.div
+            animate={{
+              filter: hovering ? "blur(2px)" : "blur(0px)",
+            }}
+            className="py-4 relative z-20"
+          >
+            <h2 className="text-white text-2xl text-left font-bold">
+              Building Solutions
+            </h2>
+            <p className="text-neutral-200 text-left  mt-4">
+            Building Solutions is an agency delivering smart, sustainable construction and design services for all project types.
+            </p>
+          </motion.div>
+        </div>
+      </div>
     </div>
   );
 }
 
-export function TextHoverEffectDemo() {
+// Sorry about this but it looks cool
+
+const Beams1 = () => {
   return (
-    <div className="h-[40rem] flex text-9xl items-center justify-center relative">
-    <div className="h-[40rem] text-4xl flex items-center justify-center absolute">
-      <TextHoverEffect text="REVLIENT." />
-    </div>
-    <TextHoverEffect text="REVLIENT." />
-  </div>
-
-
-  );
-};
-
-export function HeroParallaxDemo() {
-  return <HeroParallax products={products} />;
-}
-export const products = [
-  {
-    "title": "Revlient",
-    "link": "https://revlient.com",
-    "thumbnail": "/b5.png"
-  },
-  {
-    "title": "Revlient",
-    "link": "https://revlient.com",
-    "thumbnail": "/b3.png"
-  },
-  {
-    "title": "Revlient",
-    "link": "https://revlient.com",
-    "thumbnail": "/b1.png"
-  },
-  {
-    "title": "Revlient",
-    "link": "https://revlient.com",
-    "thumbnail": "/b4.png"
-  },
-  {
-    "title": "Revlient",
-    "link": "https://revlient.com",
-    "thumbnail": "/b5.png"
-  },
-  {
-    "title": "Revlient",
-    "link": "https://revlient.com",
-    "thumbnail": "/b4.png"
-  },
-  {
-    "title": "Revlient",
-    "link": "https://revlient.com",
-    "thumbnail": "/revlogo.png"
-  },
-  {
-    "title": "Revlient",
-    "link": "https://revlient.com",
-    "thumbnail": "/b1.png"
-  },
-  {
-    "title": "Revlient",
-    "link": "https://revlient.com",
-    "thumbnail": "/b3.png"
-  },
-  {
-    "title": "Revlient",
-    "link": "https://revlient.com",
-    "thumbnail": "/b1.png"
-  },
-  {
-    "title": "Revlient",
-    "link": "https://revlient.com",
-    "thumbnail": "/b5.png"
-  },
-  {
-    "title": "Revlient",
-    "link": "https://revlient.com",
-    "thumbnail": "/b4.png"
-  },
-  {
-    "title": "Revlient",
-    "link": "https://revlient.com",
-    "thumbnail": "/b3.png"
-  },
-  {
-    "title": "Revlient",
-    "link": "https://revlient.com",
-    "thumbnail": "/b5.png"
-  },
-  {
-    "title": "Revlient",
-    "link": "https://revlient.com",
-    "thumbnail": "/b1.png"
-  }
-];
-
-
-
-
-
-
-
-
-export function LampDemoCraft() {
-  return (
-    <LampContainer>
-      <motion.h1
-        initial={{ opacity: 0.5, y: 100 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{
-          delay: 0.3,
-          duration: 0.8,
-          ease: "easeInOut",
-        }}
-        className="mt-8 bg-gradient-to-br from-slate-300 to-slate-500 py-4 bg-clip-text text-center text-[150px] font-medium tracking-tight text-black md:text-7xl"
-      >
-        WORKS<br />
-      </motion.h1>
-     <p>scroll to explore</p>
-    </LampContainer>
-  );
-}
-
-export function LampDemoServ() {
-  return (
-    <div className="h-screen w-full bg-[#494949] flex items-center justify-center relative overflow-hidden">
-      <LampContainer>
-        <motion.h1
-          initial={{ opacity: 0.5, y: 100 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{
-            delay: 0.3,
-            duration: 0.8,
-            ease: "easeInOut",
-          }}
-          className="mt-8 bg-[#494949] py-4 bg-clip-text text-center text-[150px] font-medium tracking-tight text-black md:text-7xl"
+    <svg
+      width="1"
+      height="1"
+      viewBox="0 05"
+      fill="none"
+      xmlns="http://www.w3.org/2000/sg"
+      className="absolute top-0 left-1/2 -translate-x-1/2 w-full pointer-events-none"
+    >
+      <g filter="url(#filter0_f_120_7473)">
+        <circle cx="34" cy="52" r="114" fill="#6925E7" />
+      </g>
+      <g filter="url(#filter1_f_120_7473)">
+        <circle cx="332" cy="24" r="102" fill="#8A4BFF" />
+      </g>
+      <g filter="url(#filter2_f_120_7473)">
+        <circle cx="191" cy="53" r="102" fill="#802FE3" />
+      </g>
+      <defs>
+        <filter
+          id="filter0_f_120_7473"
+          x="-192"
+          y="-174"
+          width="452"
+          height="452"
+          filterUnits="userSpaceOnUse"
+          colorInterpolationFilters="sRGB"
         >
-          TASKS <br />
-        </motion.h1>
-        <p className="text-white text-center mt-4">scroll to explore</p>
-      </LampContainer>
-    </div>
+          <feFlood floodOpacity="0" result="BackgroundImageFix" />
+          <feBlend
+            mode="normal"
+            in="SourceGraphic"
+            in2="BackgroundImageFix"
+            result="shape"
+          />
+          <feGaussianBlur
+            stdDeviation="56"
+            result="effect1_foregroundBlur_120_7473"
+          />
+        </filter>
+        <filter
+          id="filter1_f_120_7473"
+          x="70"
+          y="-238"
+          width="524"
+          height="524"
+          filterUnits="userSpaceOnUse"
+          colorInterpolationFilters="sRGB"
+        >
+          <feFlood floodOpacity="0" result="BackgroundImageFix" />
+          <feBlend
+            mode="normal"
+            in="SourceGraphic"
+            in2="BackgroundImageFix"
+            result="shape"
+          />
+          <feGaussianBlur
+            stdDeviation="80"
+            result="effect1_foregroundBlur_120_7473"
+          />
+        </filter>
+        <filter
+          id="filter2_f_120_7473"
+          x="-71"
+          y="-209"
+          width="524"
+          height="524"
+          filterUnits="userSpaceOnUse"
+          colorInterpolationFilters="sRGB"
+        >
+          <feFlood floodOpacity="0" result="BackgroundImageFix" />
+          <feBlend
+            mode="normal"
+            in="SourceGraphic"
+            in2="BackgroundImageFix"
+            result="shape"
+          />
+          <feGaussianBlur
+            stdDeviation="80"
+            result="effect1_foregroundBlur_120_7473"
+          />
+        </filter>
+      </defs>
+    </svg>
   );
-}
+};
 
-
-export function LampDemoTeam() {
+const Rays1 = ({ className }: { className?: string }) => {
   return (
-    <LampContainer>
-      <motion.h1
-        initial={{ opacity: 0.5, y: 100 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{
-          delay: 0.3,
-          duration: 0.8,
-          ease: "easeInOut",
-        }}
-        className="mt-8 bg-gradient-to-br from-slate-300 to-slate-500 py-4 bg-clip-text text-center text-[150px] font-medium tracking-tight text-black md:text-7xl"
+    <svg
+    width="1"
+    height="1"
+    viewBox="0 05"
+    fill="none"
+    xmlns="http://www.w3.org/2000/sg"
+    className="absolute top-0 left-1/2 -translate-x-1/2 w-full pointer-events-none"
+  >
+      <g filter="url(#filter0_f_120_7480)">
+        <path
+          d="M-37.4202 -76.0163L-18.6447 -90.7295L242.792 162.228L207.51 182.074L-37.4202 -76.0163Z"
+          fill="url(#paint0_linear_120_7480)"
+        />
+      </g>
+      <g
+        style={{ mixBlendMode: "plus-lighter" }}
+        opacity="0.3"
+        filter="url(#filter1_f_120_7480)"
       >
-        TEAM <br />
-      </motion.h1>
-     <p>scroll to explore</p>
-    </LampContainer>
+        <path
+          d="M-109.54 -36.9027L-84.2903 -58.0902L178.786 193.228L132.846 223.731L-109.54 -36.9027Z"
+          fill="url(#paint1_linear_120_7480)"
+        />
+      </g>
+      <g
+        style={{ mixBlendMode: "plus-lighter" }}
+        opacity="0.86"
+        filter="url(#filter2_f_120_7480)"
+      >
+        <path
+          d="M-100.647 -65.795L-69.7261 -92.654L194.786 157.229L139.51 197.068L-100.647 -65.795Z"
+          fill="url(#paint2_linear_120_7480)"
+        />
+      </g>
+      <g
+        style={{ mixBlendMode: "plus-lighter" }}
+        opacity="0.31"
+        filter="url(#filter3_f_120_7480)"
+      >
+        <path
+          d="M163.917 -89.0982C173.189 -72.1354 80.9618 2.11525 34.7334 30.1553C-11.495 58.1954 -106.505 97.514 -115.777 80.5512C-125.048 63.5885 -45.0708 -3.23233 1.15763 -31.2724C47.386 -59.3124 154.645 -106.061 163.917 -89.0982Z"
+          fill="#8A50FF"
+        />
+      </g>
+      <g
+        style={{ mixBlendMode: "plus-lighter" }}
+        filter="url(#filter4_f_120_7480)"
+      >
+        <path
+          d="M34.2031 13.2222L291.721 269.534"
+          stroke="url(#paint3_linear_120_7480)"
+        />
+      </g>
+      <g
+        style={{ mixBlendMode: "plus-lighter" }}
+        filter="url(#filter5_f_120_7480)"
+      >
+        <path
+          d="M41 -40.9331L298.518 215.378"
+          stroke="url(#paint4_linear_120_7480)"
+        />
+      </g>
+      <g
+        style={{ mixBlendMode: "plus-lighter" }}
+        filter="url(#filter6_f_120_7480)"
+      >
+        <path
+          d="M61.3691 3.8999L317.266 261.83"
+          stroke="url(#paint5_linear_120_7480)"
+        />
+      </g>
+      <g
+        style={{ mixBlendMode: "plus-lighter" }}
+        filter="url(#filter7_f_120_7480)"
+      >
+        <path
+          d="M-1.46191 9.06348L129.458 145.868"
+          stroke="url(#paint6_linear_120_7480)"
+          strokeWidth="2"
+        />
+      </g>
+      <defs>
+        <filter
+          id="filter0_f_120_7480"
+          x="-49.4199"
+          y="-102.729"
+          width="304.212"
+          height="296.803"
+          filterUnits="userSpaceOnUse"
+          colorInterpolationFilters="sRGB"
+        >
+          <feFlood floodOpacity="0" result="BackgroundImageFix" />
+          <feBlend
+            mode="normal"
+            in="SourceGraphic"
+            in2="BackgroundImageFix"
+            result="shape"
+          />
+          <feGaussianBlur
+            stdDeviation="6"
+            result="effect1_foregroundBlur_120_7480"
+          />
+        </filter>
+        <filter
+          id="filter1_f_120_7480"
+          x="-115.54"
+          y="-64.0903"
+          width="300.326"
+          height="293.822"
+          filterUnits="userSpaceOnUse"
+          colorInterpolationFilters="sRGB"
+        >
+          <feFlood floodOpacity="0" result="BackgroundImageFix" />
+          <feBlend
+            mode="normal"
+            in="SourceGraphic"
+            in2="BackgroundImageFix"
+            result="shape"
+          />
+          <feGaussianBlur
+            stdDeviation="3"
+            result="effect1_foregroundBlur_120_7480"
+          />
+        </filter>
+        <filter
+          id="filter2_f_120_7480"
+          x="-111.647"
+          y="-103.654"
+          width="317.434"
+          height="311.722"
+          filterUnits="userSpaceOnUse"
+          colorInterpolationFilters="sRGB"
+        >
+          <feFlood floodOpacity="0" result="BackgroundImageFix" />
+          <feBlend
+            mode="normal"
+            in="SourceGraphic"
+            in2="BackgroundImageFix"
+            result="shape"
+          />
+          <feGaussianBlur
+            stdDeviation="5.5"
+            result="effect1_foregroundBlur_120_7480"
+          />
+        </filter>
+        <filter
+          id="filter3_f_120_7480"
+          x="-212.518"
+          y="-188.71"
+          width="473.085"
+          height="369.366"
+          filterUnits="userSpaceOnUse"
+          colorInterpolationFilters="sRGB"
+        >
+          <feFlood floodOpacity="0" result="BackgroundImageFix" />
+          <feBlend
+            mode="normal"
+            in="SourceGraphic"
+            in2="BackgroundImageFix"
+            result="shape"
+          />
+          <feGaussianBlur
+            stdDeviation="48"
+            result="effect1_foregroundBlur_120_7480"
+          />
+        </filter>
+        <filter
+          id="filter4_f_120_7480"
+          x="25.8447"
+          y="4.84521"
+          width="274.234"
+          height="273.065"
+          filterUnits="userSpaceOnUse"
+          colorInterpolationFilters="sRGB"
+        >
+          <feFlood floodOpacity="0" result="BackgroundImageFix" />
+          <feBlend
+            mode="normal"
+            in="SourceGraphic"
+            in2="BackgroundImageFix"
+            result="shape"
+          />
+          <feGaussianBlur
+            stdDeviation="4"
+            result="effect1_foregroundBlur_120_7480"
+          />
+        </filter>
+        <filter
+          id="filter5_f_120_7480"
+          x="32.6416"
+          y="-49.3101"
+          width="274.234"
+          height="273.065"
+          filterUnits="userSpaceOnUse"
+          colorInterpolationFilters="sRGB"
+        >
+          <feFlood floodOpacity="0" result="BackgroundImageFix" />
+          <feBlend
+            mode="normal"
+            in="SourceGraphic"
+            in2="BackgroundImageFix"
+            result="shape"
+          />
+          <feGaussianBlur
+            stdDeviation="4"
+            result="effect1_foregroundBlur_120_7480"
+          />
+        </filter>
+        <filter
+          id="filter6_f_120_7480"
+          x="54.0078"
+          y="-3.47461"
+          width="270.619"
+          height="272.68"
+          filterUnits="userSpaceOnUse"
+          colorInterpolationFilters="sRGB"
+        >
+          <feFlood floodOpacity="0" result="BackgroundImageFix" />
+          <feBlend
+            mode="normal"
+            in="SourceGraphic"
+            in2="BackgroundImageFix"
+            result="shape"
+          />
+          <feGaussianBlur
+            stdDeviation="3.5"
+            result="effect1_foregroundBlur_120_7480"
+          />
+        </filter>
+        <filter
+          id="filter7_f_120_7480"
+          x="-9.2002"
+          y="1.32812"
+          width="146.396"
+          height="152.275"
+          filterUnits="userSpaceOnUse"
+          colorInterpolationFilters="sRGB"
+        >
+          <feFlood floodOpacity="0" result="BackgroundImageFix" />
+          <feBlend
+            mode="normal"
+            in="SourceGraphic"
+            in2="BackgroundImageFix"
+            result="shape"
+          />
+          <feGaussianBlur
+            stdDeviation="3.5"
+            result="effect1_foregroundBlur_120_7480"
+          />
+        </filter>
+        <linearGradient
+          id="paint0_linear_120_7480"
+          x1="-57.5042"
+          y1="-134.741"
+          x2="403.147"
+          y2="351.523"
+          gradientUnits="userSpaceOnUse"
+        >
+          <stop offset="0.214779" stopColor="#AF53FF" />
+          <stop offset="0.781583" stopColor="#B253FF" stopOpacity="0" />
+        </linearGradient>
+        <linearGradient
+          id="paint1_linear_120_7480"
+          x1="-122.154"
+          y1="-103.098"
+          x2="342.232"
+          y2="379.765"
+          gradientUnits="userSpaceOnUse"
+        >
+          <stop offset="0.214779" stopColor="#AF53FF" />
+          <stop offset="0.781583" stopColor="#9E53FF" stopOpacity="0" />
+        </linearGradient>
+        <linearGradient
+          id="paint2_linear_120_7480"
+          x1="-106.717"
+          y1="-138.534"
+          x2="359.545"
+          y2="342.58"
+          gradientUnits="userSpaceOnUse"
+        >
+          <stop offset="0.214779" stopColor="#9D53FF" />
+          <stop offset="0.781583" stopColor="#A953FF" stopOpacity="0" />
+        </linearGradient>
+        <linearGradient
+          id="paint3_linear_120_7480"
+          x1="72.701"
+          y1="54.347"
+          x2="217.209"
+          y2="187.221"
+          gradientUnits="userSpaceOnUse"
+        >
+          <stop stopColor="#AF81FF" />
+          <stop offset="1" stopColor="#C081FF" stopOpacity="0" />
+        </linearGradient>
+        <linearGradient
+          id="paint4_linear_120_7480"
+          x1="79.4978"
+          y1="0.191681"
+          x2="224.006"
+          y2="133.065"
+          gradientUnits="userSpaceOnUse"
+        >
+          <stop stopColor="#AF81FF" />
+          <stop offset="1" stopColor="#C081FF" stopOpacity="0" />
+        </linearGradient>
+        <linearGradient
+          id="paint5_linear_120_7480"
+          x1="79.6568"
+          y1="21.8377"
+          x2="234.515"
+          y2="174.189"
+          gradientUnits="userSpaceOnUse"
+        >
+          <stop stopColor="#B981FF" />
+          <stop offset="1" stopColor="#CF81FF" stopOpacity="0" />
+        </linearGradient>
+        <linearGradient
+          id="paint6_linear_120_7480"
+          x1="16.119"
+          y1="27.6966"
+          x2="165.979"
+          y2="184.983"
+          gradientUnits="userSpaceOnUse"
+        >
+          <stop stopColor="#A981FF" />
+          <stop offset="1" stopColor="#CB81FF" stopOpacity="0" />
+        </linearGradient>
+      </defs>
+    </svg>
   );
-}
+};
 
-export function ThreeDMarqueeDemo() {
-  const images = [
-    "/client01.png",
-    "/client02.png",
-    "/client03.png",
-    "/client04.png",
-    "/client05.png",
-    "/client06.png",
-    "/client08.png",
-    "/client09.png",
-    "/brand01.svg",
-    "/brand02.svg",
-    "/brand03.png",
-    "/nestle.svg",
-    "/orderlion.svg",
-    "/officevibe.svg",
-    "/planetly.svg",
-    "/lexus.svg",
-  ];
+export function Lens2() {
+  const [hovering, setHovering] = useState(false);
+
   return (
-    <div className="mx-auto my-10 max-w-7xl rounded-3xl bg-gray-950/5 p-2 ring-1 ring-neutral-700/10 dark:bg-neutral-800">
-      <ThreeDMarquee images={images} />
+    <div>
+      <div className="w-full relative rounded-3xl overflow-hidden max-w-md mx-auto bg-black p-8 my-10">
+        <Rays2 />
+        <Beams2 />
+        <div className="relative z-10">
+          <Lens hovering={hovering} setHovering={setHovering}>
+            <img
+              src="/i1.jpg"
+              alt="image"
+              width={500}
+              height={500}
+              className="rounded-2xl"
+            />
+          </Lens>
+          <motion.div
+            animate={{
+              filter: hovering ? "blur(2px)" : "blur(0px)",
+            }}
+            className="py-4 relative z-20"
+          >
+            <h2 className="text-white text-2xl text-left font-bold">
+             Home Automation Brands
+            </h2>
+            <p className="text-neutral-200 text-left  mt-4">
+            Home Automation Brands is an agency offering smart, seamless tech solutions for modern living spaces.
+            </p>
+          </motion.div>
+        </div>
+      </div>
     </div>
   );
 }
 
+// Sorry about this but it looks cool
 
+const Beams2 = () => {
+  return (
+    <svg
+    width="1"
+    height="1"
+    viewBox="0 05"
+    fill="none"
+    xmlns="http://www.w3.org/2000/sg"
+    className="absolute top-0 left-1/2 -translate-x-1/2 w-full pointer-events-none"
+  >
+      <g filter="url(#filter0_f_120_7473)">
+        <circle cx="34" cy="52" r="114" fill="#6925E7" />
+      </g>
+      <g filter="url(#filter1_f_120_7473)">
+        <circle cx="332" cy="24" r="102" fill="#8A4BFF" />
+      </g>
+      <g filter="url(#filter2_f_120_7473)">
+        <circle cx="191" cy="53" r="102" fill="#802FE3" />
+      </g>
+      <defs>
+        <filter
+          id="filter0_f_120_7473"
+          x="-192"
+          y="-174"
+          width="452"
+          height="452"
+          filterUnits="userSpaceOnUse"
+          colorInterpolationFilters="sRGB"
+        >
+          <feFlood floodOpacity="0" result="BackgroundImageFix" />
+          <feBlend
+            mode="normal"
+            in="SourceGraphic"
+            in2="BackgroundImageFix"
+            result="shape"
+          />
+          <feGaussianBlur
+            stdDeviation="56"
+            result="effect1_foregroundBlur_120_7473"
+          />
+        </filter>
+        <filter
+          id="filter1_f_120_7473"
+          x="70"
+          y="-238"
+          width="524"
+          height="524"
+          filterUnits="userSpaceOnUse"
+          colorInterpolationFilters="sRGB"
+        >
+          <feFlood floodOpacity="0" result="BackgroundImageFix" />
+          <feBlend
+            mode="normal"
+            in="SourceGraphic"
+            in2="BackgroundImageFix"
+            result="shape"
+          />
+          <feGaussianBlur
+            stdDeviation="80"
+            result="effect1_foregroundBlur_120_7473"
+          />
+        </filter>
+        <filter
+          id="filter2_f_120_7473"
+          x="-71"
+          y="-209"
+          width="524"
+          height="524"
+          filterUnits="userSpaceOnUse"
+          colorInterpolationFilters="sRGB"
+        >
+          <feFlood floodOpacity="0" result="BackgroundImageFix" />
+          <feBlend
+            mode="normal"
+            in="SourceGraphic"
+            in2="BackgroundImageFix"
+            result="shape"
+          />
+          <feGaussianBlur
+            stdDeviation="80"
+            result="effect1_foregroundBlur_120_7473"
+          />
+        </filter>
+      </defs>
+    </svg>
+  );
+};
 
+const Rays2 = ({ className }: { className?: string }) => {
+  return (
+    <svg
+    width="1"
+    height="1"
+    viewBox="0 05"
+    fill="none"
+    xmlns="http://www.w3.org/2000/sg"
+    className="absolute top-0 left-1/2 -translate-x-1/2 w-full pointer-events-none"
+  >
+      <g filter="url(#filter0_f_120_7480)">
+        <path
+          d="M-37.4202 -76.0163L-18.6447 -90.7295L242.792 162.228L207.51 182.074L-37.4202 -76.0163Z"
+          fill="url(#paint0_linear_120_7480)"
+        />
+      </g>
+      <g
+        style={{ mixBlendMode: "plus-lighter" }}
+        opacity="0.3"
+        filter="url(#filter1_f_120_7480)"
+      >
+        <path
+          d="M-109.54 -36.9027L-84.2903 -58.0902L178.786 193.228L132.846 223.731L-109.54 -36.9027Z"
+          fill="url(#paint1_linear_120_7480)"
+        />
+      </g>
+      <g
+        style={{ mixBlendMode: "plus-lighter" }}
+        opacity="0.86"
+        filter="url(#filter2_f_120_7480)"
+      >
+        <path
+          d="M-100.647 -65.795L-69.7261 -92.654L194.786 157.229L139.51 197.068L-100.647 -65.795Z"
+          fill="url(#paint2_linear_120_7480)"
+        />
+      </g>
+      <g
+        style={{ mixBlendMode: "plus-lighter" }}
+        opacity="0.31"
+        filter="url(#filter3_f_120_7480)"
+      >
+        <path
+          d="M163.917 -89.0982C173.189 -72.1354 80.9618 2.11525 34.7334 30.1553C-11.495 58.1954 -106.505 97.514 -115.777 80.5512C-125.048 63.5885 -45.0708 -3.23233 1.15763 -31.2724C47.386 -59.3124 154.645 -106.061 163.917 -89.0982Z"
+          fill="#8A50FF"
+        />
+      </g>
+      <g
+        style={{ mixBlendMode: "plus-lighter" }}
+        filter="url(#filter4_f_120_7480)"
+      >
+        <path
+          d="M34.2031 13.2222L291.721 269.534"
+          stroke="url(#paint3_linear_120_7480)"
+        />
+      </g>
+      <g
+        style={{ mixBlendMode: "plus-lighter" }}
+        filter="url(#filter5_f_120_7480)"
+      >
+        <path
+          d="M41 -40.9331L298.518 215.378"
+          stroke="url(#paint4_linear_120_7480)"
+        />
+      </g>
+      <g
+        style={{ mixBlendMode: "plus-lighter" }}
+        filter="url(#filter6_f_120_7480)"
+      >
+        <path
+          d="M61.3691 3.8999L317.266 261.83"
+          stroke="url(#paint5_linear_120_7480)"
+        />
+      </g>
+      <g
+        style={{ mixBlendMode: "plus-lighter" }}
+        filter="url(#filter7_f_120_7480)"
+      >
+        <path
+          d="M-1.46191 9.06348L129.458 145.868"
+          stroke="url(#paint6_linear_120_7480)"
+          strokeWidth="2"
+        />
+      </g>
+      <defs>
+        <filter
+          id="filter0_f_120_7480"
+          x="-49.4199"
+          y="-102.729"
+          width="304.212"
+          height="296.803"
+          filterUnits="userSpaceOnUse"
+          colorInterpolationFilters="sRGB"
+        >
+          <feFlood floodOpacity="0" result="BackgroundImageFix" />
+          <feBlend
+            mode="normal"
+            in="SourceGraphic"
+            in2="BackgroundImageFix"
+            result="shape"
+          />
+          <feGaussianBlur
+            stdDeviation="6"
+            result="effect1_foregroundBlur_120_7480"
+          />
+        </filter>
+        <filter
+          id="filter1_f_120_7480"
+          x="-115.54"
+          y="-64.0903"
+          width="300.326"
+          height="293.822"
+          filterUnits="userSpaceOnUse"
+          colorInterpolationFilters="sRGB"
+        >
+          <feFlood floodOpacity="0" result="BackgroundImageFix" />
+          <feBlend
+            mode="normal"
+            in="SourceGraphic"
+            in2="BackgroundImageFix"
+            result="shape"
+          />
+          <feGaussianBlur
+            stdDeviation="3"
+            result="effect1_foregroundBlur_120_7480"
+          />
+        </filter>
+        <filter
+          id="filter2_f_120_7480"
+          x="-111.647"
+          y="-103.654"
+          width="317.434"
+          height="311.722"
+          filterUnits="userSpaceOnUse"
+          colorInterpolationFilters="sRGB"
+        >
+          <feFlood floodOpacity="0" result="BackgroundImageFix" />
+          <feBlend
+            mode="normal"
+            in="SourceGraphic"
+            in2="BackgroundImageFix"
+            result="shape"
+          />
+          <feGaussianBlur
+            stdDeviation="5.5"
+            result="effect1_foregroundBlur_120_7480"
+          />
+        </filter>
+        <filter
+          id="filter3_f_120_7480"
+          x="-212.518"
+          y="-188.71"
+          width="473.085"
+          height="369.366"
+          filterUnits="userSpaceOnUse"
+          colorInterpolationFilters="sRGB"
+        >
+          <feFlood floodOpacity="0" result="BackgroundImageFix" />
+          <feBlend
+            mode="normal"
+            in="SourceGraphic"
+            in2="BackgroundImageFix"
+            result="shape"
+          />
+          <feGaussianBlur
+            stdDeviation="48"
+            result="effect1_foregroundBlur_120_7480"
+          />
+        </filter>
+        <filter
+          id="filter4_f_120_7480"
+          x="25.8447"
+          y="4.84521"
+          width="274.234"
+          height="273.065"
+          filterUnits="userSpaceOnUse"
+          colorInterpolationFilters="sRGB"
+        >
+          <feFlood floodOpacity="0" result="BackgroundImageFix" />
+          <feBlend
+            mode="normal"
+            in="SourceGraphic"
+            in2="BackgroundImageFix"
+            result="shape"
+          />
+          <feGaussianBlur
+            stdDeviation="4"
+            result="effect1_foregroundBlur_120_7480"
+          />
+        </filter>
+        <filter
+          id="filter5_f_120_7480"
+          x="32.6416"
+          y="-49.3101"
+          width="274.234"
+          height="273.065"
+          filterUnits="userSpaceOnUse"
+          colorInterpolationFilters="sRGB"
+        >
+          <feFlood floodOpacity="0" result="BackgroundImageFix" />
+          <feBlend
+            mode="normal"
+            in="SourceGraphic"
+            in2="BackgroundImageFix"
+            result="shape"
+          />
+          <feGaussianBlur
+            stdDeviation="4"
+            result="effect1_foregroundBlur_120_7480"
+          />
+        </filter>
+        <filter
+          id="filter6_f_120_7480"
+          x="54.0078"
+          y="-3.47461"
+          width="270.619"
+          height="272.68"
+          filterUnits="userSpaceOnUse"
+          colorInterpolationFilters="sRGB"
+        >
+          <feFlood floodOpacity="0" result="BackgroundImageFix" />
+          <feBlend
+            mode="normal"
+            in="SourceGraphic"
+            in2="BackgroundImageFix"
+            result="shape"
+          />
+          <feGaussianBlur
+            stdDeviation="3.5"
+            result="effect1_foregroundBlur_120_7480"
+          />
+        </filter>
+        <filter
+          id="filter7_f_120_7480"
+          x="-9.2002"
+          y="1.32812"
+          width="146.396"
+          height="152.275"
+          filterUnits="userSpaceOnUse"
+          colorInterpolationFilters="sRGB"
+        >
+          <feFlood floodOpacity="0" result="BackgroundImageFix" />
+          <feBlend
+            mode="normal"
+            in="SourceGraphic"
+            in2="BackgroundImageFix"
+            result="shape"
+          />
+          <feGaussianBlur
+            stdDeviation="3.5"
+            result="effect1_foregroundBlur_120_7480"
+          />
+        </filter>
+        <linearGradient
+          id="paint0_linear_120_7480"
+          x1="-57.5042"
+          y1="-134.741"
+          x2="403.147"
+          y2="351.523"
+          gradientUnits="userSpaceOnUse"
+        >
+          <stop offset="0.214779" stopColor="#AF53FF" />
+          <stop offset="0.781583" stopColor="#B253FF" stopOpacity="0" />
+        </linearGradient>
+        <linearGradient
+          id="paint1_linear_120_7480"
+          x1="-122.154"
+          y1="-103.098"
+          x2="342.232"
+          y2="379.765"
+          gradientUnits="userSpaceOnUse"
+        >
+          <stop offset="0.214779" stopColor="#AF53FF" />
+          <stop offset="0.781583" stopColor="#9E53FF" stopOpacity="0" />
+        </linearGradient>
+        <linearGradient
+          id="paint2_linear_120_7480"
+          x1="-106.717"
+          y1="-138.534"
+          x2="359.545"
+          y2="342.58"
+          gradientUnits="userSpaceOnUse"
+        >
+          <stop offset="0.214779" stopColor="#9D53FF" />
+          <stop offset="0.781583" stopColor="#A953FF" stopOpacity="0" />
+        </linearGradient>
+        <linearGradient
+          id="paint3_linear_120_7480"
+          x1="72.701"
+          y1="54.347"
+          x2="217.209"
+          y2="187.221"
+          gradientUnits="userSpaceOnUse"
+        >
+          <stop stopColor="#AF81FF" />
+          <stop offset="1" stopColor="#C081FF" stopOpacity="0" />
+        </linearGradient>
+        <linearGradient
+          id="paint4_linear_120_7480"
+          x1="79.4978"
+          y1="0.191681"
+          x2="224.006"
+          y2="133.065"
+          gradientUnits="userSpaceOnUse"
+        >
+          <stop stopColor="#AF81FF" />
+          <stop offset="1" stopColor="#C081FF" stopOpacity="0" />
+        </linearGradient>
+        <linearGradient
+          id="paint5_linear_120_7480"
+          x1="79.6568"
+          y1="21.8377"
+          x2="234.515"
+          y2="174.189"
+          gradientUnits="userSpaceOnUse"
+        >
+          <stop stopColor="#B981FF" />
+          <stop offset="1" stopColor="#CF81FF" stopOpacity="0" />
+        </linearGradient>
+        <linearGradient
+          id="paint6_linear_120_7480"
+          x1="16.119"
+          y1="27.6966"
+          x2="165.979"
+          y2="184.983"
+          gradientUnits="userSpaceOnUse"
+        >
+          <stop stopColor="#A981FF" />
+          <stop offset="1" stopColor="#CB81FF" stopOpacity="0" />
+        </linearGradient>
+      </defs>
+    </svg>
+  );
+};
 
+export function Lens4() {
+  const [hovering, setHovering] = useState(false);
 
+  return (
+    <div>
+      <div className="w-full relative rounded-3xl overflow-hidden max-w-md mx-auto bg-black p-8 my-10">
+        <Rays3 />
+        <Beams3 />
+        <div className="relative z-10">
+          <Lens hovering={hovering} setHovering={setHovering}>
+            <img
+              src="/i4.jpg"
+              alt="image"
+              width={500}
+              height={500}
+              className="rounded-2xl"
+            />
+          </Lens>
+          <motion.div
+            animate={{
+              filter: hovering ? "blur(2px)" : "blur(0px)",
+            }}
+            className="py-4 relative z-20"
+          >
+            <h2 className="text-white text-2xl text-left font-bold">
+             Interior Design Houses
+            </h2>
+            <p className="text-neutral-200 text-left  mt-4">
+            Interior Design Companies is an agency crafting stylish, functional spaces tailored to modern lifestyles.
+            </p>
+          </motion.div>
+        </div>
+      </div>
+    </div>
+  );
+}
 
+// Sorry about this but it looks cool
 
+const Beams3 = () => {
+  return (
+    <svg
+    width="1"
+    height="1"
+    viewBox="0 05"
+    fill="none"
+    xmlns="http://www.w3.org/2000/sg"
+    className="absolute top-0 left-1/2 -translate-x-1/2 w-full pointer-events-none"
+  >
+      <g filter="url(#filter0_f_120_7473)">
+        <circle cx="34" cy="52" r="114" fill="#6925E7" />
+      </g>
+      <g filter="url(#filter1_f_120_7473)">
+        <circle cx="332" cy="24" r="102" fill="#8A4BFF" />
+      </g>
+      <g filter="url(#filter2_f_120_7473)">
+        <circle cx="191" cy="53" r="102" fill="#802FE3" />
+      </g>
+      <defs>
+        <filter
+          id="filter0_f_120_7473"
+          x="-192"
+          y="-174"
+          width="452"
+          height="452"
+          filterUnits="userSpaceOnUse"
+          colorInterpolationFilters="sRGB"
+        >
+          <feFlood floodOpacity="0" result="BackgroundImageFix" />
+          <feBlend
+            mode="normal"
+            in="SourceGraphic"
+            in2="BackgroundImageFix"
+            result="shape"
+          />
+          <feGaussianBlur
+            stdDeviation="56"
+            result="effect1_foregroundBlur_120_7473"
+          />
+        </filter>
+        <filter
+          id="filter1_f_120_7473"
+          x="70"
+          y="-238"
+          width="524"
+          height="524"
+          filterUnits="userSpaceOnUse"
+          colorInterpolationFilters="sRGB"
+        >
+          <feFlood floodOpacity="0" result="BackgroundImageFix" />
+          <feBlend
+            mode="normal"
+            in="SourceGraphic"
+            in2="BackgroundImageFix"
+            result="shape"
+          />
+          <feGaussianBlur
+            stdDeviation="80"
+            result="effect1_foregroundBlur_120_7473"
+          />
+        </filter>
+        <filter
+          id="filter2_f_120_7473"
+          x="-71"
+          y="-209"
+          width="524"
+          height="524"
+          filterUnits="userSpaceOnUse"
+          colorInterpolationFilters="sRGB"
+        >
+          <feFlood floodOpacity="0" result="BackgroundImageFix" />
+          <feBlend
+            mode="normal"
+            in="SourceGraphic"
+            in2="BackgroundImageFix"
+            result="shape"
+          />
+          <feGaussianBlur
+            stdDeviation="80"
+            result="effect1_foregroundBlur_120_7473"
+          />
+        </filter>
+      </defs>
+    </svg>
+  );
+};
 
+const Rays3 = ({ className }: { className?: string }) => {
+  return (
+    <svg
+      width="1"
+      height="1"
+      viewBox="0 05"
+      fill="none"
+      xmlns="http://www.w3.org/2000/sg"
+      className="absolute top-0 left-1/2 -translate-x-1/2 w-full pointer-events-none"
+    >
+      <g filter="url(#filter0_f_120_7480)">
+        <path
+          d="M-37.4202 -76.0163L-18.6447 -90.7295L242.792 162.228L207.51 182.074L-37.4202 -76.0163Z"
+          fill="url(#paint0_linear_120_7480)"
+        />
+      </g>
+      <g
+        style={{ mixBlendMode: "plus-lighter" }}
+        opacity="0.3"
+        filter="url(#filter1_f_120_7480)"
+      >
+        <path
+          d="M-109.54 -36.9027L-84.2903 -58.0902L178.786 193.228L132.846 223.731L-109.54 -36.9027Z"
+          fill="url(#paint1_linear_120_7480)"
+        />
+      </g>
+      <g
+        style={{ mixBlendMode: "plus-lighter" }}
+        opacity="0.86"
+        filter="url(#filter2_f_120_7480)"
+      >
+        <path
+          d="M-100.647 -65.795L-69.7261 -92.654L194.786 157.229L139.51 197.068L-100.647 -65.795Z"
+          fill="url(#paint2_linear_120_7480)"
+        />
+      </g>
+      <g
+        style={{ mixBlendMode: "plus-lighter" }}
+        opacity="0.31"
+        filter="url(#filter3_f_120_7480)"
+      >
+        <path
+          d="M163.917 -89.0982C173.189 -72.1354 80.9618 2.11525 34.7334 30.1553C-11.495 58.1954 -106.505 97.514 -115.777 80.5512C-125.048 63.5885 -45.0708 -3.23233 1.15763 -31.2724C47.386 -59.3124 154.645 -106.061 163.917 -89.0982Z"
+          fill="#8A50FF"
+        />
+      </g>
+      <g
+        style={{ mixBlendMode: "plus-lighter" }}
+        filter="url(#filter4_f_120_7480)"
+      >
+        <path
+          d="M34.2031 13.2222L291.721 269.534"
+          stroke="url(#paint3_linear_120_7480)"
+        />
+      </g>
+      <g
+        style={{ mixBlendMode: "plus-lighter" }}
+        filter="url(#filter5_f_120_7480)"
+      >
+        <path
+          d="M41 -40.9331L298.518 215.378"
+          stroke="url(#paint4_linear_120_7480)"
+        />
+      </g>
+      <g
+        style={{ mixBlendMode: "plus-lighter" }}
+        filter="url(#filter6_f_120_7480)"
+      >
+        <path
+          d="M61.3691 3.8999L317.266 261.83"
+          stroke="url(#paint5_linear_120_7480)"
+        />
+      </g>
+      <g
+        style={{ mixBlendMode: "plus-lighter" }}
+        filter="url(#filter7_f_120_7480)"
+      >
+        <path
+          d="M-1.46191 9.06348L129.458 145.868"
+          stroke="url(#paint6_linear_120_7480)"
+          strokeWidth="2"
+        />
+      </g>
+      <defs>
+        <filter
+          id="filter0_f_120_7480"
+          x="-49.4199"
+          y="-102.729"
+          width="304.212"
+          height="296.803"
+          filterUnits="userSpaceOnUse"
+          colorInterpolationFilters="sRGB"
+        >
+          <feFlood floodOpacity="0" result="BackgroundImageFix" />
+          <feBlend
+            mode="normal"
+            in="SourceGraphic"
+            in2="BackgroundImageFix"
+            result="shape"
+          />
+          <feGaussianBlur
+            stdDeviation="6"
+            result="effect1_foregroundBlur_120_7480"
+          />
+        </filter>
+        <filter
+          id="filter1_f_120_7480"
+          x="-115.54"
+          y="-64.0903"
+          width="300.326"
+          height="293.822"
+          filterUnits="userSpaceOnUse"
+          colorInterpolationFilters="sRGB"
+        >
+          <feFlood floodOpacity="0" result="BackgroundImageFix" />
+          <feBlend
+            mode="normal"
+            in="SourceGraphic"
+            in2="BackgroundImageFix"
+            result="shape"
+          />
+          <feGaussianBlur
+            stdDeviation="3"
+            result="effect1_foregroundBlur_120_7480"
+          />
+        </filter>
+        <filter
+          id="filter2_f_120_7480"
+          x="-111.647"
+          y="-103.654"
+          width="317.434"
+          height="311.722"
+          filterUnits="userSpaceOnUse"
+          colorInterpolationFilters="sRGB"
+        >
+          <feFlood floodOpacity="0" result="BackgroundImageFix" />
+          <feBlend
+            mode="normal"
+            in="SourceGraphic"
+            in2="BackgroundImageFix"
+            result="shape"
+          />
+          <feGaussianBlur
+            stdDeviation="5.5"
+            result="effect1_foregroundBlur_120_7480"
+          />
+        </filter>
+        <filter
+          id="filter3_f_120_7480"
+          x="-212.518"
+          y="-188.71"
+          width="473.085"
+          height="369.366"
+          filterUnits="userSpaceOnUse"
+          colorInterpolationFilters="sRGB"
+        >
+          <feFlood floodOpacity="0" result="BackgroundImageFix" />
+          <feBlend
+            mode="normal"
+            in="SourceGraphic"
+            in2="BackgroundImageFix"
+            result="shape"
+          />
+          <feGaussianBlur
+            stdDeviation="48"
+            result="effect1_foregroundBlur_120_7480"
+          />
+        </filter>
+        <filter
+          id="filter4_f_120_7480"
+          x="25.8447"
+          y="4.84521"
+          width="274.234"
+          height="273.065"
+          filterUnits="userSpaceOnUse"
+          colorInterpolationFilters="sRGB"
+        >
+          <feFlood floodOpacity="0" result="BackgroundImageFix" />
+          <feBlend
+            mode="normal"
+            in="SourceGraphic"
+            in2="BackgroundImageFix"
+            result="shape"
+          />
+          <feGaussianBlur
+            stdDeviation="4"
+            result="effect1_foregroundBlur_120_7480"
+          />
+        </filter>
+        <filter
+          id="filter5_f_120_7480"
+          x="32.6416"
+          y="-49.3101"
+          width="274.234"
+          height="273.065"
+          filterUnits="userSpaceOnUse"
+          colorInterpolationFilters="sRGB"
+        >
+          <feFlood floodOpacity="0" result="BackgroundImageFix" />
+          <feBlend
+            mode="normal"
+            in="SourceGraphic"
+            in2="BackgroundImageFix"
+            result="shape"
+          />
+          <feGaussianBlur
+            stdDeviation="4"
+            result="effect1_foregroundBlur_120_7480"
+          />
+        </filter>
+        <filter
+          id="filter6_f_120_7480"
+          x="54.0078"
+          y="-3.47461"
+          width="270.619"
+          height="272.68"
+          filterUnits="userSpaceOnUse"
+          colorInterpolationFilters="sRGB"
+        >
+          <feFlood floodOpacity="0" result="BackgroundImageFix" />
+          <feBlend
+            mode="normal"
+            in="SourceGraphic"
+            in2="BackgroundImageFix"
+            result="shape"
+          />
+          <feGaussianBlur
+            stdDeviation="3.5"
+            result="effect1_foregroundBlur_120_7480"
+          />
+        </filter>
+        <filter
+          id="filter7_f_120_7480"
+          x="-9.2002"
+          y="1.32812"
+          width="146.396"
+          height="152.275"
+          filterUnits="userSpaceOnUse"
+          colorInterpolationFilters="sRGB"
+        >
+          <feFlood floodOpacity="0" result="BackgroundImageFix" />
+          <feBlend
+            mode="normal"
+            in="SourceGraphic"
+            in2="BackgroundImageFix"
+            result="shape"
+          />
+          <feGaussianBlur
+            stdDeviation="3.5"
+            result="effect1_foregroundBlur_120_7480"
+          />
+        </filter>
+        <linearGradient
+          id="paint0_linear_120_7480"
+          x1="-57.5042"
+          y1="-134.741"
+          x2="403.147"
+          y2="351.523"
+          gradientUnits="userSpaceOnUse"
+        >
+          <stop offset="0.214779" stopColor="#AF53FF" />
+          <stop offset="0.781583" stopColor="#B253FF" stopOpacity="0" />
+        </linearGradient>
+        <linearGradient
+          id="paint1_linear_120_7480"
+          x1="-122.154"
+          y1="-103.098"
+          x2="342.232"
+          y2="379.765"
+          gradientUnits="userSpaceOnUse"
+        >
+          <stop offset="0.214779" stopColor="#AF53FF" />
+          <stop offset="0.781583" stopColor="#9E53FF" stopOpacity="0" />
+        </linearGradient>
+        <linearGradient
+          id="paint2_linear_120_7480"
+          x1="-106.717"
+          y1="-138.534"
+          x2="359.545"
+          y2="342.58"
+          gradientUnits="userSpaceOnUse"
+        >
+          <stop offset="0.214779" stopColor="#9D53FF" />
+          <stop offset="0.781583" stopColor="#A953FF" stopOpacity="0" />
+        </linearGradient>
+        <linearGradient
+          id="paint3_linear_120_7480"
+          x1="72.701"
+          y1="54.347"
+          x2="217.209"
+          y2="187.221"
+          gradientUnits="userSpaceOnUse"
+        >
+          <stop stopColor="#AF81FF" />
+          <stop offset="1" stopColor="#C081FF" stopOpacity="0" />
+        </linearGradient>
+        <linearGradient
+          id="paint4_linear_120_7480"
+          x1="79.4978"
+          y1="0.191681"
+          x2="224.006"
+          y2="133.065"
+          gradientUnits="userSpaceOnUse"
+        >
+          <stop stopColor="#AF81FF" />
+          <stop offset="1" stopColor="#C081FF" stopOpacity="0" />
+        </linearGradient>
+        <linearGradient
+          id="paint5_linear_120_7480"
+          x1="79.6568"
+          y1="21.8377"
+          x2="234.515"
+          y2="174.189"
+          gradientUnits="userSpaceOnUse"
+        >
+          <stop stopColor="#B981FF" />
+          <stop offset="1" stopColor="#CF81FF" stopOpacity="0" />
+        </linearGradient>
+        <linearGradient
+          id="paint6_linear_120_7480"
+          x1="16.119"
+          y1="27.6966"
+          x2="165.979"
+          y2="184.983"
+          gradientUnits="userSpaceOnUse"
+        >
+          <stop stopColor="#A981FF" />
+          <stop offset="1" stopColor="#CB81FF" stopOpacity="0" />
+        </linearGradient>
+      </defs>
+    </svg>
+  );
+};
+
+export function Lens3() {
+  const [hovering, setHovering] = useState(false);
+
+  return (
+    <div>
+      <div className="w-full relative rounded-3xl overflow-hidden max-w-md mx-auto bg-black p-8 my-10">
+        <Rays4 />
+        <Beams4 />
+        <div className="relative z-10">
+          <Lens hovering={hovering} setHovering={setHovering}>
+            <img
+              src="/i2.jpg"
+              alt="image"
+              width={500}
+              height={500}
+              className="rounded-2xl"
+            />
+          </Lens>
+          <motion.div
+            animate={{
+              filter: hovering ? "blur(2px)" : "blur(0px)",
+            }}
+            className="py-4 relative z-20"
+          >
+            <h2 className="text-white text-2xl text-left font-bold">
+             Salons
+            </h2>
+            <p className="text-neutral-200 text-left  mt-4">
+            Salon is an agency providing stylish, personalized beauty and grooming services for every client.
+            </p>
+          </motion.div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+// Sorry about this but it looks cool
+
+const Beams4 = () => {
+  return (
+    <svg
+    width="1"
+    height="1"
+    viewBox="0 05"
+    fill="none"
+    xmlns="http://www.w3.org/2000/sg"
+    className="absolute top-0 left-1/2 -translate-x-1/2 w-full pointer-events-none"
+  >
+      <g filter="url(#filter0_f_120_7473)">
+        <circle cx="34" cy="52" r="114" fill="#6925E7" />
+      </g>
+      <g filter="url(#filter1_f_120_7473)">
+        <circle cx="332" cy="24" r="102" fill="#8A4BFF" />
+      </g>
+      <g filter="url(#filter2_f_120_7473)">
+        <circle cx="191" cy="53" r="102" fill="#802FE3" />
+      </g>
+      <defs>
+        <filter
+          id="filter0_f_120_7473"
+          x="-192"
+          y="-174"
+          width="452"
+          height="452"
+          filterUnits="userSpaceOnUse"
+          colorInterpolationFilters="sRGB"
+        >
+          <feFlood floodOpacity="0" result="BackgroundImageFix" />
+          <feBlend
+            mode="normal"
+            in="SourceGraphic"
+            in2="BackgroundImageFix"
+            result="shape"
+          />
+          <feGaussianBlur
+            stdDeviation="56"
+            result="effect1_foregroundBlur_120_7473"
+          />
+        </filter>
+        <filter
+          id="filter1_f_120_7473"
+          x="70"
+          y="-238"
+          width="524"
+          height="524"
+          filterUnits="userSpaceOnUse"
+          colorInterpolationFilters="sRGB"
+        >
+          <feFlood floodOpacity="0" result="BackgroundImageFix" />
+          <feBlend
+            mode="normal"
+            in="SourceGraphic"
+            in2="BackgroundImageFix"
+            result="shape"
+          />
+          <feGaussianBlur
+            stdDeviation="80"
+            result="effect1_foregroundBlur_120_7473"
+          />
+        </filter>
+        <filter
+          id="filter2_f_120_7473"
+          x="-71"
+          y="-209"
+          width="524"
+          height="524"
+          filterUnits="userSpaceOnUse"
+          colorInterpolationFilters="sRGB"
+        >
+          <feFlood floodOpacity="0" result="BackgroundImageFix" />
+          <feBlend
+            mode="normal"
+            in="SourceGraphic"
+            in2="BackgroundImageFix"
+            result="shape"
+          />
+          <feGaussianBlur
+            stdDeviation="80"
+            result="effect1_foregroundBlur_120_7473"
+          />
+        </filter>
+      </defs>
+    </svg>
+  );
+};
+
+const Rays4 = ({ className }: { className?: string }) => {
+  return (
+    <svg
+    width="1"
+    height="1"
+    viewBox="0 05"
+    fill="none"
+    xmlns="http://www.w3.org/2000/sg"
+    className="absolute top-0 left-1/2 -translate-x-1/2 w-full pointer-events-none"
+  >
+      <g filter="url(#filter0_f_120_7480)">
+        <path
+          d="M-37.4202 -76.0163L-18.6447 -90.7295L242.792 162.228L207.51 182.074L-37.4202 -76.0163Z"
+          fill="url(#paint0_linear_120_7480)"
+        />
+      </g>
+      <g
+        style={{ mixBlendMode: "plus-lighter" }}
+        opacity="0.3"
+        filter="url(#filter1_f_120_7480)"
+      >
+        <path
+          d="M-109.54 -36.9027L-84.2903 -58.0902L178.786 193.228L132.846 223.731L-109.54 -36.9027Z"
+          fill="url(#paint1_linear_120_7480)"
+        />
+      </g>
+      <g
+        style={{ mixBlendMode: "plus-lighter" }}
+        opacity="0.86"
+        filter="url(#filter2_f_120_7480)"
+      >
+        <path
+          d="M-100.647 -65.795L-69.7261 -92.654L194.786 157.229L139.51 197.068L-100.647 -65.795Z"
+          fill="url(#paint2_linear_120_7480)"
+        />
+      </g>
+      <g
+        style={{ mixBlendMode: "plus-lighter" }}
+        opacity="0.31"
+        filter="url(#filter3_f_120_7480)"
+      >
+        <path
+          d="M163.917 -89.0982C173.189 -72.1354 80.9618 2.11525 34.7334 30.1553C-11.495 58.1954 -106.505 97.514 -115.777 80.5512C-125.048 63.5885 -45.0708 -3.23233 1.15763 -31.2724C47.386 -59.3124 154.645 -106.061 163.917 -89.0982Z"
+          fill="#8A50FF"
+        />
+      </g>
+      <g
+        style={{ mixBlendMode: "plus-lighter" }}
+        filter="url(#filter4_f_120_7480)"
+      >
+        <path
+          d="M34.2031 13.2222L291.721 269.534"
+          stroke="url(#paint3_linear_120_7480)"
+        />
+      </g>
+      <g
+        style={{ mixBlendMode: "plus-lighter" }}
+        filter="url(#filter5_f_120_7480)"
+      >
+        <path
+          d="M41 -40.9331L298.518 215.378"
+          stroke="url(#paint4_linear_120_7480)"
+        />
+      </g>
+      <g
+        style={{ mixBlendMode: "plus-lighter" }}
+        filter="url(#filter6_f_120_7480)"
+      >
+        <path
+          d="M61.3691 3.8999L317.266 261.83"
+          stroke="url(#paint5_linear_120_7480)"
+        />
+      </g>
+      <g
+        style={{ mixBlendMode: "plus-lighter" }}
+        filter="url(#filter7_f_120_7480)"
+      >
+        <path
+          d="M-1.46191 9.06348L129.458 145.868"
+          stroke="url(#paint6_linear_120_7480)"
+          strokeWidth="2"
+        />
+      </g>
+      <defs>
+        <filter
+          id="filter0_f_120_7480"
+          x="-49.4199"
+          y="-102.729"
+          width="304.212"
+          height="296.803"
+          filterUnits="userSpaceOnUse"
+          colorInterpolationFilters="sRGB"
+        >
+          <feFlood floodOpacity="0" result="BackgroundImageFix" />
+          <feBlend
+            mode="normal"
+            in="SourceGraphic"
+            in2="BackgroundImageFix"
+            result="shape"
+          />
+          <feGaussianBlur
+            stdDeviation="6"
+            result="effect1_foregroundBlur_120_7480"
+          />
+        </filter>
+        <filter
+          id="filter1_f_120_7480"
+          x="-115.54"
+          y="-64.0903"
+          width="300.326"
+          height="293.822"
+          filterUnits="userSpaceOnUse"
+          colorInterpolationFilters="sRGB"
+        >
+          <feFlood floodOpacity="0" result="BackgroundImageFix" />
+          <feBlend
+            mode="normal"
+            in="SourceGraphic"
+            in2="BackgroundImageFix"
+            result="shape"
+          />
+          <feGaussianBlur
+            stdDeviation="3"
+            result="effect1_foregroundBlur_120_7480"
+          />
+        </filter>
+        <filter
+          id="filter2_f_120_7480"
+          x="-111.647"
+          y="-103.654"
+          width="317.434"
+          height="311.722"
+          filterUnits="userSpaceOnUse"
+          colorInterpolationFilters="sRGB"
+        >
+          <feFlood floodOpacity="0" result="BackgroundImageFix" />
+          <feBlend
+            mode="normal"
+            in="SourceGraphic"
+            in2="BackgroundImageFix"
+            result="shape"
+          />
+          <feGaussianBlur
+            stdDeviation="5.5"
+            result="effect1_foregroundBlur_120_7480"
+          />
+        </filter>
+        <filter
+          id="filter3_f_120_7480"
+          x="-212.518"
+          y="-188.71"
+          width="473.085"
+          height="369.366"
+          filterUnits="userSpaceOnUse"
+          colorInterpolationFilters="sRGB"
+        >
+          <feFlood floodOpacity="0" result="BackgroundImageFix" />
+          <feBlend
+            mode="normal"
+            in="SourceGraphic"
+            in2="BackgroundImageFix"
+            result="shape"
+          />
+          <feGaussianBlur
+            stdDeviation="48"
+            result="effect1_foregroundBlur_120_7480"
+          />
+        </filter>
+        <filter
+          id="filter4_f_120_7480"
+          x="25.8447"
+          y="4.84521"
+          width="274.234"
+          height="273.065"
+          filterUnits="userSpaceOnUse"
+          colorInterpolationFilters="sRGB"
+        >
+          <feFlood floodOpacity="0" result="BackgroundImageFix" />
+          <feBlend
+            mode="normal"
+            in="SourceGraphic"
+            in2="BackgroundImageFix"
+            result="shape"
+          />
+          <feGaussianBlur
+            stdDeviation="4"
+            result="effect1_foregroundBlur_120_7480"
+          />
+        </filter>
+        <filter
+          id="filter5_f_120_7480"
+          x="32.6416"
+          y="-49.3101"
+          width="274.234"
+          height="273.065"
+          filterUnits="userSpaceOnUse"
+          colorInterpolationFilters="sRGB"
+        >
+          <feFlood floodOpacity="0" result="BackgroundImageFix" />
+          <feBlend
+            mode="normal"
+            in="SourceGraphic"
+            in2="BackgroundImageFix"
+            result="shape"
+          />
+          <feGaussianBlur
+            stdDeviation="4"
+            result="effect1_foregroundBlur_120_7480"
+          />
+        </filter>
+        <filter
+          id="filter6_f_120_7480"
+          x="54.0078"
+          y="-3.47461"
+          width="270.619"
+          height="272.68"
+          filterUnits="userSpaceOnUse"
+          colorInterpolationFilters="sRGB"
+        >
+          <feFlood floodOpacity="0" result="BackgroundImageFix" />
+          <feBlend
+            mode="normal"
+            in="SourceGraphic"
+            in2="BackgroundImageFix"
+            result="shape"
+          />
+          <feGaussianBlur
+            stdDeviation="3.5"
+            result="effect1_foregroundBlur_120_7480"
+          />
+        </filter>
+        <filter
+          id="filter7_f_120_7480"
+          x="-9.2002"
+          y="1.32812"
+          width="146.396"
+          height="152.275"
+          filterUnits="userSpaceOnUse"
+          colorInterpolationFilters="sRGB"
+        >
+          <feFlood floodOpacity="0" result="BackgroundImageFix" />
+          <feBlend
+            mode="normal"
+            in="SourceGraphic"
+            in2="BackgroundImageFix"
+            result="shape"
+          />
+          <feGaussianBlur
+            stdDeviation="3.5"
+            result="effect1_foregroundBlur_120_7480"
+          />
+        </filter>
+        <linearGradient
+          id="paint0_linear_120_7480"
+          x1="-57.5042"
+          y1="-134.741"
+          x2="403.147"
+          y2="351.523"
+          gradientUnits="userSpaceOnUse"
+        >
+          <stop offset="0.214779" stopColor="#AF53FF" />
+          <stop offset="0.781583" stopColor="#B253FF" stopOpacity="0" />
+        </linearGradient>
+        <linearGradient
+          id="paint1_linear_120_7480"
+          x1="-122.154"
+          y1="-103.098"
+          x2="342.232"
+          y2="379.765"
+          gradientUnits="userSpaceOnUse"
+        >
+          <stop offset="0.214779" stopColor="#AF53FF" />
+          <stop offset="0.781583" stopColor="#9E53FF" stopOpacity="0" />
+        </linearGradient>
+        <linearGradient
+          id="paint2_linear_120_7480"
+          x1="-106.717"
+          y1="-138.534"
+          x2="359.545"
+          y2="342.58"
+          gradientUnits="userSpaceOnUse"
+        >
+          <stop offset="0.214779" stopColor="#9D53FF" />
+          <stop offset="0.781583" stopColor="#A953FF" stopOpacity="0" />
+        </linearGradient>
+        <linearGradient
+          id="paint3_linear_120_7480"
+          x1="72.701"
+          y1="54.347"
+          x2="217.209"
+          y2="187.221"
+          gradientUnits="userSpaceOnUse"
+        >
+          <stop stopColor="#AF81FF" />
+          <stop offset="1" stopColor="#C081FF" stopOpacity="0" />
+        </linearGradient>
+        <linearGradient
+          id="paint4_linear_120_7480"
+          x1="79.4978"
+          y1="0.191681"
+          x2="224.006"
+          y2="133.065"
+          gradientUnits="userSpaceOnUse"
+        >
+          <stop stopColor="#AF81FF" />
+          <stop offset="1" stopColor="#C081FF" stopOpacity="0" />
+        </linearGradient>
+        <linearGradient
+          id="paint5_linear_120_7480"
+          x1="79.6568"
+          y1="21.8377"
+          x2="234.515"
+          y2="174.189"
+          gradientUnits="userSpaceOnUse"
+        >
+          <stop stopColor="#B981FF" />
+          <stop offset="1" stopColor="#CF81FF" stopOpacity="0" />
+        </linearGradient>
+        <linearGradient
+          id="paint6_linear_120_7480"
+          x1="16.119"
+          y1="27.6966"
+          x2="165.979"
+          y2="184.983"
+          gradientUnits="userSpaceOnUse"
+        >
+          <stop stopColor="#A981FF" />
+          <stop offset="1" stopColor="#CB81FF" stopOpacity="0" />
+        </linearGradient>
+      </defs>
+    </svg>
+  );
+};
 

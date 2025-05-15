@@ -11,8 +11,9 @@ export default function Faq() {
 	};
 
 	return (
-		<section className="w-full pt-10 max-w-4xl mx-auto px-10 py-20 bg-[#111] text-white rounded-3xl shadow-xl border border-gray-800">
-			<h1 className="text-4xl font-extrabold text-center text-gray-100 mb-14 tracking-wide">
+		<section className="w-full h-full bg-[#494949]">
+		<div className="w-full pt-10 max-w-4xl mx-auto px-10 py-20 bg-black text-white rounded-3xl shadow-xl border border-gray-800">
+			<h1 className="text-4xl font-extrabold text-center text-gray-100 mb-14 bg-[#494949]tracking-wide">
 				Frequently Asked Questions
 			</h1>
 			<div className="space-y-8">
@@ -45,6 +46,7 @@ export default function Faq() {
 					</div>
 				))}
 			</div>
+		</div>
 		</section>
 	);
 }

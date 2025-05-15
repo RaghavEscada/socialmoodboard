@@ -8,7 +8,7 @@ import { useScroll, useTransform, motion } from "framer-motion";
 
 export default function Socials() {
 	const [rotate, setRotate] = useState(0);
-	const phrase = ["SMMA", "Web Development", "Brand Identity", "Content Strategy"];
+	const phrase = ["SMM", "Web Development", "Brand Identity", "Content Strategy"];
 	useEffect(() => {
 		window.addEventListener("mousemove", (e) => {
 			let mouseX = e.clientX;
@@ -31,11 +31,11 @@ export default function Socials() {
 	const mq = useTransform(scrollYProgress, [0, 1], [0, -700]);
 	return (
 		<section
-			className="w-full min-h-screen sm:h-screen  bg-black text-red-400  xm:h-screen text-white padding-y relative"
+			className="w-full min-h-screen sm:h-screen  bg-black text-red-400  xm:h-screen  padding-y relative"
 			ref={container}>
 			<div className="w-full h-full flex justify-center gap-[50px] items-center flex-col">
 				<div className="flex  flex-col gap-[10px] pb-[50px]">
-					<h1 className="text-[277px] leading-[207px] lg:text-[230px] lg:leading-[170px] md:text-[150px] md:leading-[100px] sm:text-[74px] sm:leading-[68px] xm:text-[64px] xm:leading-[48px] text-center font-bold font-FoundersGrotesk text-secondry uppercase pointer-events-none">
+					<h1 className="text-[277px] leading-[207px] lg:text-[230px] lg:leading-[170px] md:text-[150px] md:leading-[100px] sm:text-[74px] sm:leading-[68px] xm:text-[64px] xm:leading-[48px] text-center font-bold font-FoundersGrotesk text-red-600 uppercase pointer-events-none">
 						<TextMask>{phrase}</TextMask>
 					</h1>
 				</div>
@@ -52,7 +52,7 @@ export default function Socials() {
 									Studio:
 								</h1>
 								<div className="flex flex-col gap-y-[10px]">
-									<p>Based out of Kottayam, Kerala</p>
+									<p>Based out of Pune | Dehradun | Mumbai</p>
 								</div>
 							</div>
 							<div className="flex w-fit h-fit gap-x-[5px] group">
@@ -60,13 +60,13 @@ export default function Socials() {
 								<h1 className="paragraph  font-NeueMontreal text-white font-bold">
 							Contact Number : 
   <a 
-    href="https://wa.me/919789985132?text=Dear%20Revlient%20Marketing%20Team%2C%20I%20hope%20you%20are%20doing%20well.%20I%20am%20interested%20in%20learning%20more%20about%20your%20services%20and%20ongoing%20projects.%20Could%20you%20please%20provide%20more%20details%20or%20let%20me%20know%20a%20suitable%20time%20to%20discuss%20further%3F%20Looking%20forward%20to%20your%20response.%20Best%20regards%2C%20Client" 
+    href="https://wa.me/919789985132?text=Dear%20Social%20Moodboard%20Team%2C%20I%20hope%20you%20are%20doing%20well.%20I%20am%20interested%20in%20learning%20more%20about%20your%20services%20and%20ongoing%20projects.%20Could%20you%20please%20provide%20more%20details%20or%20let%20me%20know%20a%20suitable%20time%20to%20discuss%20further%3F%20Looking%20forward%20to%20your%20response.%20Best%20regards%2C%20Client" 
     target="_blank" 
     rel="noopener noreferrer"
     className="text-green-600 font-bold underline"
   >
      
-	 +91 6238714197 | +91 8590709204
+	 +91 82794 47049
   </a>
 </h1>
 								</div>

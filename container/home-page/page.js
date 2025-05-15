@@ -7,18 +7,18 @@ import Lenis from '@studio-freight/lenis';
 import { useTransform, useScroll, motion } from 'framer-motion';
 
 const images = [
-  'img1.jpeg',
-  'img2.jpeg',
-  'img3.jpeg',
-  'img1.jpeg',
-  'img2.jpeg',
-  'img3.jpeg',
-  'img1.jpeg',
-  'img2.jpeg',
-  'img3.jpeg',
-  'img1.jpeg',
-  'img2.jpeg',
-  'img3.jpeg',
+  'h1.jpeg',
+  '2.png',
+  'h3.jpg',
+  'h4.jpg',
+  '4.png',
+  'h7.jpg',
+  'h8.jpeg',
+  'h9.jpeg',
+  'h10.jpeg',
+  'h11.jpg',
+  '15.png',
+
 ];
 
 export default function Home() {
@@ -78,14 +78,14 @@ export default function Home() {
 
 const Column = ({ images, y }) => (
   <motion.div className={styles.column} style={{ y }}>
-    {images.map((src, i) => (
-      <div key={i} className={styles.imageContainer}>
+    {images.map((src) => (
+      <div key={src} className={styles.imageContainer}>
         <Image
           src={`/${src}`}
-          alt={`Image ${i}`}
+          alt={src}
           fill
           sizes="(max-width: 768px) 100vw, 33vw"
-          style={{ objectFit: 'cover' }}
+          style={{ objectFit: "cover" }}
           priority
         />
       </div>
