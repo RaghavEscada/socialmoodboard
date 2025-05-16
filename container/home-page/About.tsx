@@ -1,11 +1,6 @@
 "use client";
 import { Instagram, Linkedin, MessageCircle, ChevronRight } from "lucide-react";
-import { Lens1 } from "@/data/data";
-import { Lens2 } from "@/data/data";
-import { Lens3 } from "@/data/data";
-import { Lens4 } from "@/data/data";
-
-
+import { Lens1, Lens2, Lens3, Lens4 } from "@/data/data";
 
 const socialLinks = [
   { id: 1, title: "Instagram", href: "https://www.instagram.com/thesocialmoodboard/", icon: <Instagram size={20} /> },
@@ -49,18 +44,74 @@ const services = [
     color: "#ff2d20", // Red-600 color
     src: "/ds.png",
   }
-  
 ];
 
-
-// LogoCloud component defined separately
-
+// LogoCloud component defined here
+const LogoCloud = () => {
+  const logos = [
+    {
+      name: "Babel",
+      url: "https://svgl.app/library/babel.svg",
+    },
+    {
+      name: "Ngrok",
+      url: "https://svgl.app/library/ngrok-light.svg",
+    },
+    {
+      name: "Webflow",
+      url: "https://svgl.app/library/webflow.svg",
+    },
+    {
+      name: "Perplexity",
+      url: "https://svgl.app/library/perplexity_wordmark_light.svg",
+    },
+    {
+      name: "Sanity",
+      url: "https://svgl.app/library/sanity.svg",
+    },
+    {
+      name: "Post CSS",
+      url: "https://svgl.app/library/postcss_wordmark.svg",
+    },
+  ];
+  
+  return (
+    <div className="w-full py-12">
+      <div className="mx-auto w-full px-2 md:px-4">
+        <div
+          className="group relative mt-6 flex gap-6 overflow-hidden p-2"
+          style={{
+            maskImage:
+              "linear-gradient(to left, transparent 0%, black 20%, black 80%, transparent 95%)",
+          }}
+        >
+          {Array(5)
+            .fill(null)
+            .map((_, index) => (
+              <div
+                key={index}
+                className="flex shrink-0 animate-logo-cloud flex-row justify-around gap-6"
+              >
+                {logos.map((logo, key) => (
+                  <img
+                    key={key}
+                    src={logo.url}
+                    className="h-10 w-28 px-2"
+                    alt={logo.name}
+                  />
+                ))}
+              </div>
+            ))}
+        </div>
+      </div>
+    </div>
+  );
+};
 
 export default function About() {
   return (
     <section className="w-full bg-[#494949] py-32 px-8 sm:px-12 lg:px-16 relative overflow-hidden">
       {/* Refined background elements with reduced opacity */}
-
 
       {/* Header Section - Added more vertical spacing */}
       <div className="text-center max-w-4xl mx-auto relative z-10 mb-40">
@@ -171,72 +222,72 @@ export default function About() {
 
       {/* About the Founder Section */}
       <div className="relative z-10 bg-transparent lg:py-32 overflow-hidden">
-  {/* Decorative elements */}
-  <div className="absolute inset-0 opacity-10">
-    <div className="absolute top-10 left-10 w-64 h-64 rounded-full bg-red-600 blur-3xl"></div>
-    <div className="absolute bottom-10 right-10 w-96 h-96 rounded-full bg-red-800 blur-3xl"></div>
-  </div>
-  
-  <div className="container mx-auto px-6 relative">
-    {/* Heading with refined typography */}
-    <h2 className="text-4xl md:text-5xl lg:text-7xl mb-16 text-center font-['Gilda_Display'] text-white">
-     Behind <span className="italic text-red-500 relative">
-        Social Moodboard
-        <span className="absolute -bottom-2 left-0 w-full h-px bg-red-500 opacity-50"></span>
-      </span>
-    </h2>
-    
-    <div className="flex flex-col lg:flex-row items-center justify-center gap-8 lg:gap-16 mx-auto max-w-7xl">
-      {/* Image Section with enhanced styling */}
-      <div className="w-64 h-64 lg:w-80 lg:h-80 rounded-full overflow-hidden shadow-2xl transform hover:scale-105 transition-all duration-500 relative">
-        <div className="absolute inset-0 bg-gradient-to-tr from-red-600/30 to-transparent mix-blend-overlay z-10"></div>
-        <img
-          src="/vis.png" 
-          alt="Vishishta Banerjee"
-          className="w-full h-full object-cover"
-        />
-      </div>
-      
-      {/* Text Section with better layout */}
-      <div className="max-w-xl text-center lg:text-left mt-12 lg:mt-0">
-        <p className="text-white/90 text-lg font-light mb-8 font-['Gilda_Display'] leading-relaxed">
-          With over four years of experience, I, <strong className="text-red-400">Vishishta Banerjee</strong>, have worked with brands across industries, transforming their online presence. I create strategies that don't just "look good" but actually drive results. From F&B hotspots to corporate houses, I've helped businesses craft an identity, connect with their audience, and, most importantly—convert.
-        </p>
+        {/* Decorative elements */}
+        <div className="absolute inset-0 opacity-10">
+          <div className="absolute top-10 left-10 w-64 h-64 rounded-full bg-red-600 blur-3xl"></div>
+          <div className="absolute bottom-10 right-10 w-96 h-96 rounded-full bg-red-800 blur-3xl"></div>
+        </div>
         
-        {/* Enhanced button with animation */}
-        <a
-          href="/about"
-          className="inline-flex items-center px-8 py-4 bg-gradient-to-r from-red-600 to-red-800 text-white font-light rounded-full hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group"
-        >
-          <span className="font-['Gilda_Display']">Learn More About Us</span>
-          <svg className="w-5 h-5 ml-2 transform group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
-          </svg>
-        </a>
+        <div className="container mx-auto px-6 relative">
+          {/* Heading with refined typography */}
+          <h2 className="text-4xl md:text-5xl lg:text-7xl mb-16 text-center font-['Gilda_Display'] text-white">
+            Behind <span className="italic text-red-500 relative">
+              Social Moodboard
+              <span className="absolute -bottom-2 left-0 w-full h-px bg-red-500 opacity-50"></span>
+            </span>
+          </h2>
+          
+          <div className="flex flex-col lg:flex-row items-center justify-center gap-8 lg:gap-16 mx-auto max-w-7xl">
+            {/* Image Section with enhanced styling */}
+            <div className="w-64 h-64 lg:w-80 lg:h-80 rounded-full overflow-hidden shadow-2xl transform hover:scale-105 transition-all duration-500 relative">
+              <div className="absolute inset-0 bg-gradient-to-tr from-red-600/30 to-transparent mix-blend-overlay z-10"></div>
+              <img
+                src="/vis.png" 
+                alt="Vishishta Banerjee"
+                className="w-full h-full object-cover"
+              />
+            </div>
+            
+            {/* Text Section with better layout */}
+            <div className="max-w-xl text-center lg:text-left mt-12 lg:mt-0">
+              <p className="text-white/90 text-lg font-light mb-8 font-['Gilda_Display'] leading-relaxed">
+                With over four years of experience, I, <strong className="text-red-400">Vishishta Banerjee</strong>, have worked with brands across industries, transforming their online presence. I create strategies that don't just "look good" but actually drive results. From F&B hotspots to corporate houses, I've helped businesses craft an identity, connect with their audience, and, most importantly—convert.
+              </p>
+              
+              {/* Enhanced button with animation */}
+              <a
+                href="/about"
+                className="inline-flex items-center px-8 py-4 bg-gradient-to-r from-red-600 to-red-800 text-white font-light rounded-full hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group"
+              >
+                <span className="font-['Gilda_Display']">Learn More About Us</span>
+                <svg className="w-5 h-5 ml-2 transform group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                </svg>
+              </a>
+            </div>
+          </div>
+        </div>
       </div>
-    </div>
-  </div>
-</div>
 
-<div>
+      {/* Niches Section */}
+      <div className="mt-32">
+        <h2 className="text-4xl md:text-5xl lg:text-7xl mb-16 text-center font-['Gilda_Display'] text-white">
+          Niches <span className="italic text-red-500 relative">
+            Worked In
+            <span className="absolute -bottom-2 left-0 w-full h-px bg-red-500 opacity-50"></span>
+          </span>
+        </h2>
 
-<h2 className="text-4xl md:text-5xl lg:text-7xl mb-16 text-center font-['Gilda_Display'] text-white">
-     Niches <span className="italic text-red-500 relative">
-       Worked In
-        <span className="absolute -bottom-2 left-0 w-full h-px bg-red-500 opacity-50"></span>
-      </span>
-    </h2>
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
+          <Lens1 />
+          <Lens2 />
+          <Lens3 />
+          <Lens4 />
+        </div>
+      </div>
 
-    <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
-  <Lens1 />
-  <Lens2 />
-  <Lens3 />
-  <Lens4 />
-</div>
-
-</div>
-
-
+      {/* Logo Cloud Section */}
+      <LogoCloud />
     </section>
   );
 }

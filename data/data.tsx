@@ -29,12 +29,10 @@ export function Lens1() {
             }}
             className="py-4 relative z-20"
           >
-            <h2 className="text-white text-2xl text-left font-bold">
-              Building Solutions
+           <h2 className="text-white text-3xl text-center font-bold">
+             Building Solutions
             </h2>
-            <p className="text-neutral-200 text-left  mt-4">
-            Building Solutions is an agency delivering smart, sustainable construction and design services for all project types.
-            </p>
+          
           </motion.div>
         </div>
       </div>
@@ -490,12 +488,10 @@ export function Lens2() {
             }}
             className="py-4 relative z-20"
           >
-            <h2 className="text-white text-2xl text-left font-bold">
+            <h2 className="text-white text-3xl text-left font-bold">
              Home Automation Brands
             </h2>
-            <p className="text-neutral-200 text-left  mt-4">
-            Home Automation Brands is an agency offering smart, seamless tech solutions for modern living spaces.
-            </p>
+           
           </motion.div>
         </div>
       </div>
@@ -951,12 +947,10 @@ export function Lens4() {
             }}
             className="py-4 relative z-20"
           >
-            <h2 className="text-white text-2xl text-left font-bold">
-             Interior Design Houses
+          <h2 className="text-white text-3xl text-center font-bold">
+             Salons
             </h2>
-            <p className="text-neutral-200 text-left  mt-4">
-            Interior Design Companies is an agency crafting stylish, functional spaces tailored to modern lifestyles.
-            </p>
+          
           </motion.div>
         </div>
       </div>
@@ -1412,12 +1406,10 @@ export function Lens3() {
             }}
             className="py-4 relative z-20"
           >
-            <h2 className="text-white text-2xl text-left font-bold">
-             Salons
+            <h2 className="text-white text-3xl text-center font-bold">
+             Interior Design Houses
             </h2>
-            <p className="text-neutral-200 text-left  mt-4">
-            Salon is an agency providing stylish, personalized beauty and grooming services for every client.
-            </p>
+            
           </motion.div>
         </div>
       </div>
